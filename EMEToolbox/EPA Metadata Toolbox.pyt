@@ -48,6 +48,10 @@ class upgradeTool(object):
         """Modify the values and properties of parameters before internal
         validation is performed.  This method is called whenever a parameter
         has been changed."""
+        if parameters[1].valueAsText:
+            fileExtension = parameters[1].valueAsText[-4:].lower()
+            if fileExtension != ".xml":
+                parameters[1].value = parameters[1].valueAsText + ".xml"
         return
 
     def updateMessages(self, parameters):
@@ -126,6 +130,10 @@ class cleanupTool(object):
         """Modify the values and properties of parameters before internal
         validation is performed.  This method is called whenever a parameter
         has been changed."""
+        if parameters[1].valueAsText:
+            fileExtension = parameters[1].valueAsText[-4:].lower()
+            if fileExtension != ".xml":
+                parameters[1].value = parameters[1].valueAsText + ".xml"
         return
 
     def updateMessages(self, parameters):
@@ -193,6 +201,10 @@ class exportISOTool(object):
         """Modify the values and properties of parameters before internal
         validation is performed.  This method is called whenever a parameter
         has been changed."""
+        if parameters[1].valueAsText:
+            fileExtension = parameters[1].valueAsText[-4:].lower()
+            if fileExtension != ".xml":
+                parameters[1].value = parameters[1].valueAsText + ".xml"
         return
 
     def updateMessages(self, parameters):
@@ -232,7 +244,6 @@ class saveTemplate(object):
 
     def getParameterInfo(self):
         """Define parameter definitions"""
-            # Second parameter
         param0 = arcpy.Parameter(
             displayName="Source Metadata",
             name="sourcemetadata",
@@ -240,7 +251,6 @@ class saveTemplate(object):
             parameterType="Required",
             direction="Input")
 
-        # Third parameter
         param1 = arcpy.Parameter(
             displayName="Output Metadata",
             name="out_metadata",
@@ -259,6 +269,10 @@ class saveTemplate(object):
         """Modify the values and properties of parameters before internal
         validation is performed.  This method is called whenever a parameter
         has been changed."""
+        if parameters[1].valueAsText:
+            fileExtension = parameters[1].valueAsText[-4:].lower()
+            if fileExtension != ".xml":
+                parameters[1].value = parameters[1].valueAsText + ".xml"
         return
 
     def updateMessages(self, parameters):
@@ -330,6 +344,10 @@ class mergeTemplate(object):
         """Modify the values and properties of parameters before internal
         validation is performed.  This method is called whenever a parameter
         has been changed."""
+        if parameters[2].valueAsText:
+            fileExtension = parameters[2].valueAsText[-4:].lower()
+            if fileExtension != ".xml":
+                parameters[2].value = parameters[2].valueAsText + ".xml"
         return
 
     def updateMessages(self, parameters):

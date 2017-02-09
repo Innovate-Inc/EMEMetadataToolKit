@@ -1,5 +1,8 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Windows;
+using System.Windows.Input;
+using System.Windows.Navigation;
 using System.Xml;
 
 namespace EMEdbManager
@@ -21,6 +24,12 @@ namespace EMEdbManager
             XmlRecord_SystemofRecords.Source = new Uri(_pathEmeDb + "SystemofRecords.xml");
             XmlRecord_SystemofRecords.XPath = "/emeData/SystemOfRecord[SysRcrdName[(text())]]";
             XmlRecord_SecConsts.Source = new Uri(_pathEmeDb + "SecurityConstraints.xml");
+        }
+
+        private void Hyperlink_RequestNavigate(object sender, RequestNavigateEventArgs e)
+        {
+            Process.Start(new ProcessStartInfo(e.Uri.AbsoluteUri));
+            e.Handled = true;
         }
 
         private void lbxThemekeyEpa_loaded(object sender, RoutedEventArgs e)
@@ -73,8 +82,8 @@ namespace EMEdbManager
 
         private void btnSaveThemekeyUser_Click(object sender, RoutedEventArgs e)
         {
-            string source = XmlRecord_ThemeKeyPlace.Source.LocalPath;
-            XmlRecord_ThemeKeyPlace.Document.Save(source);
+            string source = XmlRecord_ThemeKeyUser.Source.LocalPath;
+            XmlRecord_ThemeKeyUser.Document.Save(source);
         }
 
         private void btnAddThemekeyEpa_Click(object sender, RoutedEventArgs e)
@@ -91,6 +100,7 @@ namespace EMEdbManager
             epaElement.AppendChild(xmlEleKeyword);
             epaElement.AppendChild(xmlEleDefault);
             doc.DocumentElement.InsertAfter(epaElement, doc.DocumentElement.LastChild);
+
         }
 
         private void btnAddThemekeyUser_Click(object sender, RoutedEventArgs e)
@@ -149,6 +159,37 @@ namespace EMEdbManager
             xmlEleSOR.AppendChild(xmlEleSORname);
             xmlEleSOR.AppendChild(xmlEleSORurl);
             doc.DocumentElement.InsertAfter(xmlEleSOR, doc.DocumentElement.LastChild);
+        }
+
+        private void btnDeletePlaceKeyword_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnDeleteEpaKeyword_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnDeleteUserKeyword_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnDeleteSecConsts_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnTestThemekeyUser_Click(object sender, RoutedEventArgs e)
+        {
+            XmlDocument doc = XmlRecord_ThemeKeyUser.Document;
+            string source = XmlRecord_ThemeKeyUser.Source.LocalPath;
+            foreach (XmlNode objNode in doc.SelectNodes("KeywordsUser"))
+                if (objNode.SelectSingleNode("themekey").InnerText == tbKeywordUser.Text)
+                    objNode.ParentNode.RemoveChild(objNode);
+
+            XmlRecord_ThemeKeyUser.Document.Save(source);
         }
     }
 }

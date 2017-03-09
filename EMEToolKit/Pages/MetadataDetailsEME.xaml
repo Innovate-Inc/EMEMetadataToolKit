@@ -137,19 +137,26 @@
                                     <!-- file id -->
                                     <!--<Label Grid.Row="0" Grid.Column="0" Style="{DynamicResource EditorHLabelNoIdentStyle}" Content="{x:Static r:Resources.LBL_META_FILEID}"/>-->
                                     <Border Grid.Row="0" Grid.ColumnSpan="2" Background="LemonChiffon"></Border>
-                                    <Label Grid.Row="0" Grid.Column="0" Style="{DynamicResource EditorHLabelNoIdentStyle}" Background="LemonChiffon">
+                                    <StackPanel Orientation="Horizontal">
+                                        <Label Grid.Row="0" Grid.Column="0" Style="{DynamicResource EditorHLabelNoIdentStyle}" Background="LemonChiffon">
                                         <Hyperlink NavigateUri="https://www.epa.gov/geospatial/epa-metadata-technical-specification#identifier" RequestNavigate="Hyperlink_RequestNavigate">
                                             <TextBlock Text="{x:Static r:Resources.LBL_META_FILEID}" FontWeight="Bold"/>
                                         </Hyperlink>
-                                    </Label>
-                                    <ListBox Style="{DynamicResource EditorNoScrollListBoxStyle}" Grid.Row="0" Grid.Column="1" ItemsSource="{Binding XPath=mdFileID}" Background="LemonChiffon">
-                                        <ListBox.ItemTemplate>
-                                            <DataTemplate>
-                                                <p:MD_FileIdentifier/>
-                                            </DataTemplate>
-                                        </ListBox.ItemTemplate>
-                                    </ListBox>
+                                        </Label>
+                                        <Label VerticalAlignment="Center" HorizontalAlignment="Left" ToolTip="Link to Style Guide">
+                                            <Hyperlink NavigateUri="https://www.epa.gov/geospatial/epa-metadata-technical-specification" RequestNavigate="Hyperlink_RequestNavigate" TextDecorations="{x:Null}">
+                                                <Image Source="../Icons/info.rnd.white.png" RenderOptions.BitmapScalingMode="Fant" MaxHeight="14"/>
+                                            </Hyperlink>
+                                        </Label>
 
+                                        <ListBox Style="{DynamicResource EditorNoScrollListBoxStyle}" Grid.Row="0" Grid.Column="1" ItemsSource="{Binding XPath=mdFileID}" Background="LemonChiffon">
+                                            <ListBox.ItemTemplate>
+                                                <DataTemplate>
+                                                    <p:MD_FileIdentifier/>
+                                                </DataTemplate>
+                                            </ListBox.ItemTemplate>
+                                        </ListBox>
+                                    </StackPanel>
                                     <!-- parent file id -->
                                     <Label Grid.Row="1" Grid.Column="0" Style="{DynamicResource EditorHLabelNoIdentStyle}" Content="{x:Static r:Resources.LBL_META_PARENTFILEID}"/>
                                     <TextBox Grid.Row="1" Grid.Column="1" Style="{DynamicResource EditorTextBoxStyle}" ToolTip="{x:Static r:Definitions.MD_Metadata_parentIdentifier}"

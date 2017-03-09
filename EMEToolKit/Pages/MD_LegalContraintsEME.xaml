@@ -123,10 +123,18 @@
                                         <TextBlock Text="{x:Static r:Resources.LBL_CONSTS_USELIMIT}" FontWeight="Bold"/>
                                     </Hyperlink>
                                 </Label>
+                                <Label VerticalAlignment="Center" HorizontalAlignment="Left" ToolTip="Link to Style Guide">
+                                    <Hyperlink NavigateUri="https://www.epa.gov/geospatial/epa-metadata-technical-specification" RequestNavigate="Hyperlink_RequestNavigate" TextDecorations="{x:Null}">
+                                        <Image Source="../Icons/info.rnd.white.png" RenderOptions.BitmapScalingMode="Fant" MaxHeight="14"/>
+                                    </Hyperlink>
+                                </Label>
                             </DockPanel>
                             <!-- use limitations -->
                             <StackPanel>
-                                <Button Name="btnAddSORN" Content="Add System of Records Notice" Click="btnAddSORN_Click"/>
+                                <StackPanel Orientation="Horizontal">
+                                    <Button Name="btnAddSORN" Content="Add System of Records Notice" Click="btnAddSORN_Click"/>
+                                    <Button Name="btnAddEpaDL" Content="Add System of Records Notice" Click="btnAddEpaDL_Click"/>
+                                </StackPanel>
                                 <TextBox x:Name="tbxUseLimit" Style="{DynamicResource EditorTextAreaResizeStyle}" Text="{e:MetadataBinding XPath=.}" v:Nav.AnchorName="dataLicense" ToolTip="{x:Static r:Definitions.MD_Constraints_useLimitation}"/>
                             </StackPanel>
                         </StackPanel>

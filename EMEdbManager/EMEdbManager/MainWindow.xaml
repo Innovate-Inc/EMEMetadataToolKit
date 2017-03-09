@@ -32,6 +32,8 @@
             <Setter Property="Margin" Value="0,3,0,3" />
         </Style>
 
+        <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
+        
         <DataTemplate x:Key="keywordItemTemplate">
             <Grid HorizontalAlignment="{Binding HorizontalAlignment, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ContentPresenter}}, Mode=OneWayToSource}">
                 <Grid.ColumnDefinitions>
@@ -41,7 +43,9 @@
                 </Grid.ColumnDefinitions>
                 <CheckBox Grid.Column="0" IsChecked="{Binding XPath=default}" VerticalAlignment="Center" HorizontalAlignment="Left" Checked="btnSaveThemekeyEpa_Click" Unchecked="btnSaveThemekeyEpa_Click"/>
                 <Label Grid.Column="1" Content="{Binding XPath=themekey}" Loaded="lbxThemekeyEpa_loaded" HorizontalAlignment="Left" />
-                <Button Grid.Column="2" x:Name="btnDeleteEpaKeyword" Click="btnDeleteEpaKeyword_Click" VerticalAlignment="Center" HorizontalAlignment="Right" BorderThickness="0" Background="Transparent" Margin="0,0,5,0">
+                <Button Grid.Column="2" x:Name="btnDeleteEpaKeyword" Click="btnDeleteEpaKeyword_Click"
+                        Visibility="{Binding TemplatedParent.IsSelected,RelativeSource={RelativeSource TemplatedParent},Converter={StaticResource BooleanToVisibilityConverter}}"
+                        VerticalAlignment="Center" HorizontalAlignment="Right" BorderThickness="0" Background="Transparent" Margin="0,0,5,0">
                     <Image Source="../Icons/GenericDeleteRed16.png" Stretch="None" />
                 </Button>
             </Grid>
@@ -56,7 +60,9 @@
                 </Grid.ColumnDefinitions>
                 <CheckBox Grid.Column="0" IsChecked="{Binding XPath=default}" VerticalAlignment="Center" HorizontalAlignment="Left" Checked="btnSaveThemekeyPlace_Click" Unchecked="btnSaveThemekeyPlace_Click"/>
                 <Label Grid.Column="1" Content="{Binding XPath=placekey}" Loaded="lbxThemekeyPlace_loaded" HorizontalAlignment="Left"/>
-                <Button Grid.Column="2" x:Name="btnDeletePlaceKeyword" Click="btnDeletePlaceKeyword_Click" VerticalAlignment="Center" HorizontalAlignment="Right" BorderThickness="0" Background="Transparent" Margin="0,0,5,0">
+                <Button Grid.Column="2" x:Name="btnDeletePlaceKeyword" Click="btnDeletePlaceKeyword_Click"
+                        Visibility="{Binding TemplatedParent.IsSelected,RelativeSource={RelativeSource TemplatedParent},Converter={StaticResource BooleanToVisibilityConverter}}"
+                        VerticalAlignment="Center" HorizontalAlignment="Right" BorderThickness="0" Background="Transparent" Margin="0,0,5,0">
                     <Image Source="../Icons/GenericDeleteRed16.png" Stretch="None" />
                 </Button>
             </Grid>
@@ -71,7 +77,9 @@
                 </Grid.ColumnDefinitions>
                 <CheckBox Grid.Column="0" IsChecked="{Binding XPath=default}" VerticalAlignment="Center" Checked="btnSaveThemekeyUser_Click" Unchecked="btnSaveThemekeyUser_Click"/>
                 <Label Grid.Column="1" Content="{Binding XPath=themekey}" Loaded="lbxThemekeyUser_loaded"/>
-                <Button Grid.Column="2" x:Name="btnDeleteUserKeyword" Click="btnDeleteUserKeyword_Click" VerticalAlignment="Center" HorizontalAlignment="Right" BorderThickness="0" Background="Transparent" Margin="0,0,5,0">
+                <Button Grid.Column="2" x:Name="btnDeleteUserKeyword" Click="btnDeleteUserKeyword_Click" 
+                        Visibility="{Binding TemplatedParent.IsSelected,RelativeSource={RelativeSource TemplatedParent},Converter={StaticResource BooleanToVisibilityConverter}}"
+                        VerticalAlignment="Center" HorizontalAlignment="Right" BorderThickness="0" Background="Transparent" Margin="0,0,5,0">
                     <Image Source="../Icons/GenericDeleteRed16.png" Stretch="None" />
                 </Button>
             </Grid>
@@ -88,7 +96,9 @@
         <DataTemplate x:Key="secconstsItemTemplate">
             <Grid HorizontalAlignment="{Binding HorizontalAlignment, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ContentPresenter}}, Mode=OneWayToSource}">
                 <Label Content="{Binding XPath=usenote}" Loaded="lbxSecConsts_loaded"/>
-                <Button x:Name="btnDeleteSecConsts" Click="btnDeleteSecConsts_Click" VerticalAlignment="Center" HorizontalAlignment="Right" BorderThickness="0" Background="Transparent" Margin="0,0,5,0" >
+                <Button x:Name="btnDeleteSecConsts" Click="btnDeleteSecConsts_Click" 
+                        Visibility="{Binding TemplatedParent.IsSelected,RelativeSource={RelativeSource TemplatedParent},Converter={StaticResource BooleanToVisibilityConverter}}"
+                        VerticalAlignment="Center" HorizontalAlignment="Right" BorderThickness="0" Background="Transparent" Margin="0,0,5,0" >
                     <Image Source="../Icons/GenericDeleteRed16.png" Stretch="None" />
                 </Button>
             </Grid>
@@ -160,7 +170,6 @@
                         <Label Grid.Column="0" Grid.Row="1" Style="{StaticResource labelStyle}">Thesaurus:</Label>
                         <Label Grid.Column="1" Grid.Row="1" Style="{StaticResource thesaStyle}" Content="{Binding XPath=themekt}"/>
                         <Button x:Name="btnSaveThemekeyEpa" Grid.Column="1" Grid.Row="2" Click="btnSaveThemekeyEpa_Click" Margin="10,0" Width="140" Height="20">Update Keyword</Button>
-                        <!--<Button x:Name="btnAddThemekeyEpa" Grid.Column="1" Grid.Row="3" Click="btnAddThemekeyEpa_Click" Margin="10,0" Width="140" Height="20">Add Keyword</Button>-->
                     </Grid>
                 </Grid>
             </TabItem>
@@ -216,8 +225,6 @@
                         <Label Grid.Column="0" Grid.Row="1" Style="{StaticResource labelStyle}">Thesaurus:</Label>
                         <Label Grid.Column="1" Grid.Row="1" Style="{StaticResource thesaStyle}" Content="{Binding XPath=themekt}"/>
                         <Button x:Name="btnSaveThemekeyUser" Grid.Column="1" Grid.Row="2" Click="btnSaveThemekeyUser_Click" Margin="10,0" Width="140" Height="20">Update Keyword</Button>
-                        <Button x:Name="btnTestThemekeyUser" Grid.Column="1" Grid.Row="3" Click="btnTestThemekeyUser_Click" Margin="10,0" Width="140" Height="20">Delete Keyword</Button>
-                        <!--<Button x:Name="btnAddThemekeyUser" Grid.Column="1" Grid.Row="3" Click="btnAddThemekeyUser_Click" Margin="10,0" Width="140" Height="20">Add Keyword</Button>-->
                     </Grid>
                 </Grid>
             </TabItem>
@@ -273,7 +280,6 @@
                         <!--<Label Grid.Column="0" Grid.Row="1" Style="{StaticResource labelStyle}">Thesaurus:</Label>-->
                         <!--<Label Grid.Column="1" Grid.Row="1" Style="{StaticResource thesaStyle}" Content="{Binding XPath=placekt}"/>-->
                         <Button x:Name="btnSaveThemekeyPlace" Grid.Column="1" Grid.Row="2" Click="btnSaveThemekeyPlace_Click" Margin="10,0" Width="140" Height="20">Update Keyword</Button>
-                        <!--<Button x:Name="btnAddThemekeyPlace" Grid.Column="1" Grid.Row="3" Click="btnAddThemekeyPlace_Click" Margin="10,0" Width="140" Height="20">Add Keyword</Button>-->
                     </Grid>
                 </Grid>
             </TabItem>
@@ -324,7 +330,6 @@
                         <TextBox Grid.Column="1" Grid.Row="1" Style="{StaticResource textboxStyle}" Text="{Binding XPath=SysRcrdUrl}"/>
 
                         <Button x:Name="btnSaveSOR" Grid.Column="1" Grid.Row="2" Click="btnSaveSOR_Click" Margin="10,0" Width="154" Height="20">Update System of Records</Button>
-                        <!--<Button x:Name="btnAddSOR" Grid.Column="1" Grid.Row="4" Click="btnAddSOR_Click" Margin="10,0" Width="154" Height="20">New System of Records</Button>-->
                     </Grid>
                 </Grid>
             </TabItem>
@@ -375,11 +380,10 @@
                             <RowDefinition Height="30" />
                         </Grid.RowDefinitions>
                         <Label Grid.Column="0" Grid.Row="0" Style="{StaticResource labelStyle}" HorizontalAlignment="Left">Use Limitations:</Label>
-                        <TextBox Grid.Column="1" Grid.Row="0" Style="{StaticResource textboxStyle}" Text="{Binding XPath=usenote}"/>
+                        <TextBox x:Name="tbUseNote" Grid.Column="1" Grid.Row="0" Style="{StaticResource textboxStyle}" Text="{Binding XPath=usenote}"/>
                         <Label Grid.Column="0" Grid.Row="1" Style="{StaticResource labelStyle}" HorizontalAlignment="Left">Classification:</Label>
                         <TextBox Grid.Column="1" Grid.Row="1" Style="{StaticResource textboxStyle}" Text="{Binding XPath=constsclass}"/>
                         <Button Grid.Column="1" Grid.Row="2" x:Name="btnSaveSecConsts" Click="btnSaveSecConsts_Click" Margin="10,0" Width="150" Height="20">Update Security Constraints</Button>
-                        <!--<Button Grid.Column="1" Grid.Row="4" x:Name="btnAddSecConsts" Click="btnAddSecConsts_Click" Margin="10,0" Width="150" Height="20">New Security Constraint</Button>-->
                     </Grid>
                 </Grid>
             </TabItem>

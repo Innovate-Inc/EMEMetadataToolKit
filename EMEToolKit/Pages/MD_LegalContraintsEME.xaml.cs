@@ -68,5 +68,20 @@ namespace EPAMetadataEditor.Pages
             Process.Start(new ProcessStartInfo(e.Uri.AbsoluteUri));
             e.Handled = true;
         }
+
+        private void btnAddEpaDL_Click(object sender, RoutedEventArgs e)
+        {
+            ListBox liBox = (ListBox)lbxLegalConstsUseLimit;
+            foreach (var liBoxItem in liBox.Items)
+            {
+                var liBoxCont = liBox.ItemContainerGenerator.ContainerFromItem(liBoxItem);
+                var liBoxChildren = AllChildren(liBoxCont);
+                var liBoxName = "tbxUseLimit";
+                var liBoxCtrl = (TextBox)liBoxChildren.First(c => c.Name == liBoxName);
+                liBoxCtrl.Text = "EPA Data License";
+                liBoxCtrl.Focus();
+            }
+            tbxChangeFocus.Focus();
+        }
     }
 }

@@ -206,14 +206,21 @@
                                            ToolTip="{x:Static r:Definitions.MD_DataIdentification_topicCategory}"
                                            v:Nav.AnchorName="topics,tpCatBag"
                                            Content="{x:Static r:Resources.LBL_DESC_TOPICS}" />-->
-                                    <Label Style="{DynamicResource EditorVLabelNoIdentStyle}" 
+                                    <StackPanel Orientation="Horizontal">
+                                        <Label Style="{DynamicResource EditorVLabelNoIdentStyle}" 
                                            ToolTip="{x:Static r:Definitions.MD_DataIdentification_topicCategory}"
                                            v:Nav.AnchorName="topics,tpCatBag">
-                                        <Hyperlink NavigateUri="https://www.epa.gov/geospatial/epa-metadata-technical-specification#tags-iso" RequestNavigate="Hyperlink_RequestNavigate">
-                                            <!--<TextBlock Text="{x:Static r:Resources.LBL_DESC_TOPICS}"/>-->
-                                            <TextBlock Text="ISO 19115 Topic Categories" FontWeight="Bold" />
-                                        </Hyperlink>
-                                    </Label>
+                                            <Hyperlink NavigateUri="https://www.epa.gov/geospatial/epa-metadata-technical-specification#tags-iso" RequestNavigate="Hyperlink_RequestNavigate">
+                                                <!--<TextBlock Text="{x:Static r:Resources.LBL_DESC_TOPICS}"/>-->
+                                                <TextBlock Text="ISO 19115 Topic Categories" FontWeight="Bold" />
+                                            </Hyperlink>
+                                        </Label>
+                                        <Label VerticalAlignment="Center" HorizontalAlignment="Left" ToolTip="Link to Style Guide">
+                                            <Hyperlink NavigateUri="https://www.epa.gov/geospatial/epa-metadata-technical-specification" RequestNavigate="Hyperlink_RequestNavigate" TextDecorations="{x:Null}">
+                                                <Image Source="../Icons/info.rnd.white.png" RenderOptions.BitmapScalingMode="Fant" MaxHeight="14"/>
+                                            </Hyperlink>
+                                        </Label>
+                                    </StackPanel>
                                     <Grid>
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="*"/>
@@ -301,6 +308,11 @@
                                                                 <TextBlock Text="EPA Keywords" FontWeight="Bold"/>
                                                             </Hyperlink>
                                                         </Label>
+                                                        <Label VerticalAlignment="Center" HorizontalAlignment="Left" ToolTip="Link to Style Guide">
+                                                            <Hyperlink NavigateUri="https://www.epa.gov/geospatial/epa-metadata-technical-specification" RequestNavigate="Hyperlink_RequestNavigate" TextDecorations="{x:Null}">
+                                                                <Image Source="../Icons/info.rnd.white.png" RenderOptions.BitmapScalingMode="Fant" MaxHeight="14"/>
+                                                            </Hyperlink>
+                                                        </Label>
                                                     </DockPanel>
                                                 </Expander.Header>
                                                 <StackPanel Style="{DynamicResource ExpanderBodyStyle}">
@@ -338,6 +350,11 @@
                                                                 <TextBlock Text="Program Code Keywords" FontWeight="Bold"/>
                                                             </Hyperlink>
                                                         </Label>
+                                                        <Label VerticalAlignment="Center" HorizontalAlignment="Left" ToolTip="Link to Style Guide">
+                                                            <Hyperlink NavigateUri="https://www.epa.gov/geospatial/epa-metadata-technical-specification" RequestNavigate="Hyperlink_RequestNavigate" TextDecorations="{x:Null}">
+                                                                <Image Source="../Icons/info.rnd.white.png" RenderOptions.BitmapScalingMode="Fant" MaxHeight="14"/>
+                                                            </Hyperlink>
+                                                        </Label>
                                                     </DockPanel>
                                                 </Expander.Header>
                                                 <StackPanel Style="{DynamicResource ExpanderBodyStyle}">
@@ -370,6 +387,11 @@
                                                         <Label Style="{DynamicResource EditorHExpanderLabel}">
                                                             <Hyperlink NavigateUri="https://www.epa.gov/geospatial/epa-metadata-technical-specification#tags-place" RequestNavigate="Hyperlink_RequestNavigate">
                                                                 <TextBlock Text="Place Keywords" FontWeight="Bold"/>
+                                                            </Hyperlink>
+                                                        </Label>
+                                                        <Label VerticalAlignment="Center" HorizontalAlignment="Left" ToolTip="Link to Style Guide">
+                                                            <Hyperlink NavigateUri="https://www.epa.gov/geospatial/epa-metadata-technical-specification" RequestNavigate="Hyperlink_RequestNavigate" TextDecorations="{x:Null}">
+                                                                <Image Source="../Icons/info.rnd.white.png" RenderOptions.BitmapScalingMode="Fant" MaxHeight="14"/>
                                                             </Hyperlink>
                                                         </Label>
                                                     </DockPanel>
@@ -410,6 +432,11 @@
                                                         <Label Style="{DynamicResource EditorHExpanderLabel}">
                                                             <Hyperlink NavigateUri="https://www.epa.gov/geospatial/epa-metadata-technical-specification#tags-general" RequestNavigate="Hyperlink_RequestNavigate">
                                                                 <TextBlock Text="User Keywords" FontWeight="Bold"/>
+                                                            </Hyperlink>
+                                                        </Label>
+                                                        <Label VerticalAlignment="Center" HorizontalAlignment="Left" ToolTip="Link to Style Guide">
+                                                            <Hyperlink NavigateUri="https://www.epa.gov/geospatial/epa-metadata-technical-specification" RequestNavigate="Hyperlink_RequestNavigate" TextDecorations="{x:Null}">
+                                                                <Image Source="../Icons/info.rnd.white.png" RenderOptions.BitmapScalingMode="Fant" MaxHeight="14"/>
                                                             </Hyperlink>
                                                         </Label>
                                                     </DockPanel>
@@ -454,6 +481,11 @@
                                                                 <TextBlock Text="Custom Keywords" FontWeight="Bold"/>
                                                             </Hyperlink>
                                                         </Label>
+                                                        <Label VerticalAlignment="Center" HorizontalAlignment="Left" ToolTip="Link to Style Guide">
+                                                            <Hyperlink NavigateUri="https://www.epa.gov/geospatial/epa-metadata-technical-specification" RequestNavigate="Hyperlink_RequestNavigate" TextDecorations="{x:Null}">
+                                                                <Image Source="../Icons/info.rnd.white.png" RenderOptions.BitmapScalingMode="Fant" MaxHeight="14"/>
+                                                            </Hyperlink>
+                                                        </Label>
                                                     </DockPanel>
                                                 </Expander.Header>
                                                 <StackPanel Style="{DynamicResource ExpanderBodyStyle}">
@@ -492,6 +524,11 @@
                                                         <Label Style="{DynamicResource EditorHExpanderLabel}">
                                                             <Hyperlink NavigateUri="https://www.epa.gov/geospatial/epa-metadata-technical-specification#tags-general" RequestNavigate="Hyperlink_RequestNavigate">
                                                                 <TextBlock Text="Keywords and Program Code" FontWeight="Bold"/>
+                                                            </Hyperlink>
+                                                        </Label>
+                                                        <Label VerticalAlignment="Center" HorizontalAlignment="Left" ToolTip="Link to Style Guide">
+                                                            <Hyperlink NavigateUri="https://www.epa.gov/geospatial/epa-metadata-technical-specification" RequestNavigate="Hyperlink_RequestNavigate" TextDecorations="{x:Null}">
+                                                                <Image Source="../Icons/info.rnd.white.png" RenderOptions.BitmapScalingMode="Fant" MaxHeight="14"/>
                                                             </Hyperlink>
                                                         </Label>
                                                     </DockPanel>

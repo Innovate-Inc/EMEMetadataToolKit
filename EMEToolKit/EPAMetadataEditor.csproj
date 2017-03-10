@@ -179,6 +179,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\MD_RestrictionCodeEpaDataLic.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\MD_RestrictionCodeSOR.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -884,6 +888,9 @@
     </Compile>
     <Compile Include="Pages\MD_LegalContraintsEME.xaml.cs">
       <DependentUpon>MD_LegalContraintsEME.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\MD_RestrictionCodeEpaDataLic.xaml.cs">
+      <DependentUpon>MD_RestrictionCodeEpaDataLic.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\MD_RestrictionCodeSOR.xaml.cs">
       <DependentUpon>MD_RestrictionCodeSOR.xaml</DependentUpon>

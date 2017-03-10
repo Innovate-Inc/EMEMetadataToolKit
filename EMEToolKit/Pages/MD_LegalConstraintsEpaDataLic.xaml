@@ -98,6 +98,7 @@
 
     <Grid Style="{DynamicResource EditorSubPageStyle}">
         <StackPanel>
+            <TextBox x:Name="tbxChangeFocus" Style="{DynamicResource TbxHidden}"/>
 
             <!-- use limitations -->
             <ListBox Style="{DynamicResource EditorNoScrollListBoxStyle}" ItemsSource="{Binding XPath=useLimit}">
@@ -109,7 +110,7 @@
                                     <Image Style="{DynamicResource DeleteImageStyle}" Source="../Icons/GenericDeleteRed16.png"/>
                                 </Button>
                                 <Label Style="{DynamicResource EditorHLabelNoIdentStyle}">
-                                    <Hyperlink NavigateUri="https://www.epa.gov/geospatial/epa-metadata-technical-specification#system-of-records" RequestNavigate="Hyperlink_RequestNavigate">
+                                    <Hyperlink NavigateUri="https://www.epa.gov/geospatial/epa-metadata-technical-specification#data-license" RequestNavigate="Hyperlink_RequestNavigate">
                                         <TextBlock Text="{e:MetadataBinding XPath=.}" FontWeight="Bold"/>
                                     </Hyperlink>
                                 </Label>
@@ -136,13 +137,15 @@
                         <DockPanel LastChildFill="True">
                             <Label DockPanel.Dock="Left" Style="{DynamicResource EditorHLabelNoIdentStyle}" Content="{x:Static r:Resources.LBL_CONSTS_ACCESS}"/>
                             <!-- restriction code -->
-                            <p:MD_RestrictionCode/>
+                            <p:MD_RestrictionCodeEpaDataLic/>
                         </DockPanel>
                     </DataTemplate>
                 </ListBox.ItemTemplate>
             </ListBox>
 
             <!-- other limitations -->
+            <TextBox x:Name="tbxLicenseUrl" Text="{Binding XPath=othConsts}" Style="{DynamicResource TbxHidden}" />
+
             <ListBox x:Name="lbxLegalConstsOtherLimits" Style="{DynamicResource EditorNoScrollListBoxStyle}" ItemsSource="{Binding XPath=othConsts}">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
@@ -151,29 +154,25 @@
                                 <Button DockPanel.Dock="Right" Click="DeleteItem" Style="{DynamicResource DeleteButton}">
                                     <Image Style="{DynamicResource DeleteImageStyle}" Source="../Icons/GenericDeleteRed16.png"/>
                                 </Button>
-                                <Label Style="{DynamicResource EditorHLabelNoIdentStyle}" Content="{x:Static r:Resources.LBL_CONSTS_OTHER}"/>
+                                <Label Style="{DynamicResource EditorHLabelNoIdentStyle}" Content="Open Data License URL"/>
+                                <Label Style="{DynamicResource EditorHLabelNoIdentStyle}" VerticalAlignment="Center" HorizontalAlignment="Left" ToolTip="{x:Static r:Definitions.MD_LegalConstraints_otherConstraints}" Loaded="tbxLegalConstsSystemURL_Loaded">
+                                    <Hyperlink NavigateUri="https://edg.epa.gov/EPA_Data_License.html" RequestNavigate="Hyperlink_RequestNavigate" TextDecorations="{x:Null}">
+                                        <TextBlock x:Name="tbxLegalConstsSystemURL" Text="{e:MetadataBinding XPath=.}" />
+                                    </Hyperlink>
+                                </Label>
                             </DockPanel>
-                            <!-- other limitations -->
-                            <controls:Resizer>
-                                <!--<TextBox x:Name="tbxLegalConstsSystemURL" Style="{DynamicResource TbxHidden}" Text="{e:MetadataBinding XPath=.}" v:Nav.AnchorName="sornURL" ToolTip="{x:Static r:Definitions.MD_LegalConstraints_otherConstraints}"/>-->
-                                <TextBox Style="{DynamicResource EditorTextAreaResizeStyle}" 
-                                         x:Name="tbxLegalConstsSystemURL" 
-                                         Text="{e:MetadataBinding XPath=.}"
-                                         v:Nav.AnchorName="licenseURL"
-                                         ToolTip="{x:Static r:Definitions.MD_LegalConstraints_otherConstraints}"/>
-                            </controls:Resizer>
                         </StackPanel>
                     </DataTemplate>
                 </ListBox.ItemTemplate>
             </ListBox>
 
             <!-- ADD use limitation -->
-            <Button Tag="Other" Click="AddRecordByTagToLocal" Style="{DynamicResource AddButton}">
+            <!--<Button Tag="Other" Click="AddRecordByTagToLocal" Style="{DynamicResource AddButton}">
                 <StackPanel VerticalAlignment="Center" Orientation="Horizontal">
                     <Image Style="{DynamicResource AddImageStyle}" Source="../Icons/GenericAddGreen16.png"/>
-                    <TextBlock Style="{DynamicResource ButtonTextStyle}" Text="Add System of Records URL"/>
+                    <TextBlock Style="{DynamicResource ButtonTextStyle}" Text="Add Data License URL"/>
                 </StackPanel>
-            </Button>
+            </Button>-->
         </StackPanel>
     </Grid>
 </corepages:EditorPage>

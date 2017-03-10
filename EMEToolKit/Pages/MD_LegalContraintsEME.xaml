@@ -108,6 +108,8 @@
     <Grid Style="{DynamicResource EditorSubPageStyle}">
         <StackPanel>
             <TextBox x:Name="tbxChangeFocus" Style="{DynamicResource TbxHidden}"/>
+            <TextBox x:Name="tbxUseLimitType" Text="{Binding XPath=useLimit}" Style="{DynamicResource TbxHidden}" />
+            
             <!-- use limitations -->
             <ListBox x:Name="lbxLegalConstsUseLimit" Style="{DynamicResource EditorNoScrollListBoxStyle}" ItemsSource="{Binding XPath=useLimit}">
                 <ListBox.ItemTemplate>
@@ -131,10 +133,8 @@
                             </DockPanel>
                             <!-- use limitations -->
                             <StackPanel>
-                                <StackPanel Orientation="Horizontal">
-                                    <Button Name="btnAddSORN" Content="Add System of Records Notice" Click="btnAddSORN_Click"/>
-                                    <Button Name="btnAddEpaDL" Content="Add System of Records Notice" Click="btnAddEpaDL_Click"/>
-                                </StackPanel>
+                                <!--<Button Name="btnAddSORN" Content="Add System of Records Notice" Click="btnAddSORN_Click"/>-->
+                                <!--<Button Name="btnAddEpaDL" Content="Add EPA Data License" Click="btnAddEpaDL_Click"/>-->
                                 <TextBox x:Name="tbxUseLimit" Style="{DynamicResource EditorTextAreaResizeStyle}" Text="{e:MetadataBinding XPath=.}" v:Nav.AnchorName="dataLicense" ToolTip="{x:Static r:Definitions.MD_Constraints_useLimitation}"/>
                             </StackPanel>
                         </StackPanel>
@@ -146,8 +146,20 @@
             <Button Tag="UseLimit" Click="AddRecordByTagToLocal" Style="{DynamicResource AddButton}">
                 <StackPanel VerticalAlignment="Center" Orientation="Horizontal">
                     <Image Style="{DynamicResource AddImageStyle}" Source="../Icons/GenericAddGreen16.png"/>
-                    <!--<TextBlock Style="{DynamicResource ButtonTextStyle}" Text="{x:Static r:Resources.BTN_CONSTS_NEW_USELIMIT}"/>-->
-                    <TextBlock Style="{DynamicResource ButtonTextStyle}" Text="New Use Limitation | System of Records Notice"/>
+                    <TextBlock Style="{DynamicResource ButtonTextStyle}" Text="{x:Static r:Resources.BTN_CONSTS_NEW_USELIMIT}"/>
+                    <!--<TextBlock Style="{DynamicResource ButtonTextStyle}" Text="New Use Limitation | System of Records Notice"/>-->
+                </StackPanel>
+            </Button>
+            <Button x:Name="btnAddToLocalSoRN" Tag="test" Click="AddToLocalSoRN" Style="{DynamicResource AddButton}">
+                <StackPanel VerticalAlignment="Center" Orientation="Horizontal">
+                    <Image Style="{DynamicResource AddImageStyle}" Source="../Icons/GenericAddGreen16.png"/>
+                    <TextBlock Style="{DynamicResource ButtonTextStyle}" Text="Add System of Records Notice"/>
+                </StackPanel>
+            </Button>
+            <Button x:Name="btnAddToLocalDataLic" Tag="test" Click="AddToLocalDataLic" Style="{DynamicResource AddButton}">
+                <StackPanel VerticalAlignment="Center" Orientation="Horizontal">
+                    <Image Style="{DynamicResource AddImageStyle}" Source="../Icons/GenericAddGreen16.png"/>
+                    <TextBlock Style="{DynamicResource ButtonTextStyle}" Text="Add EPA Data License"/>
                 </StackPanel>
             </Button>
 
@@ -229,10 +241,6 @@
                             </DockPanel>
                             <!-- other limitations -->
                             <controls:Resizer>
-                                <!--<TextBox Style="{DynamicResource EditorTextAreaResizeStyle}" 
-                                         Text="{e:MetadataBinding XPath=.}"
-                                         v:Nav.AnchorName="othConsts"
-                                         ToolTip="{x:Static r:Definitions.MD_LegalConstraints_otherConstraints}"/>-->
                                 <TextBox Style="{DynamicResource EditorTextAreaResizeStyle}" 
                                          Text="{e:MetadataBinding XPath=.}"
                                          v:Nav.AnchorName="licenseURL"
@@ -243,7 +251,7 @@
                 </ListBox.ItemTemplate>
             </ListBox>
 
-            <!-- ADD use limitation -->
+            <!-- ADD other limitation -->
             <Button Tag="Other" Click="AddRecordByTagToLocal" Style="{DynamicResource AddButton}">
                 <StackPanel VerticalAlignment="Center" Orientation="Horizontal">
                     <Image Style="{DynamicResource AddImageStyle}" Source="../Icons/GenericAddGreen16.png"/>

@@ -67,30 +67,16 @@ namespace EPAMetadataEditor.Pages
 
         private void tbxLegalConstsSystemURL_Loaded(object sender, RoutedEventArgs e)
         {
-            //if (tbxLegalConstsSystemURL.IsVisible == true)
+            //if (tbxLegalConstsSystemURL.IsVisible == true);
+            tbxLicenseUrl.Focus();
+            tbxLicenseUrl.Text = "https://edg.epa.gov/EPA_Data_License.html";
+            tbxChangeFocus.Focus();
         }
 
-        //private void cboSystemNames_LostMouseCapture(object sender, MouseEventArgs e)
+        //private void btnAddToLocal_Click(object sender, RoutedEventArgs e)
         //{
-        //    ListBox liBox = (ListBox)lbxLegalConstsOtherLimits;
-        //    string testURL = "";
-        //    foreach (var liBoxItem in liBox.Items)
-        //    {
-        //        var liBoxCont = liBox.ItemContainerGenerator.ContainerFromItem(liBoxItem);
-        //        var liBoxChildren = AllChildren(liBoxCont);
-        //        string tbxName = "tbxLegalConstsSystemURL";
-        //        TextBox tbxLegalURL = (TextBox)liBoxChildren.First(c => c.Name == tbxName);
-        //        string cboBoxName = "cboSystemNames";
-        //        ComboBox cboSysName = (ComboBox)liBoxChildren.First(c => c.Name == cboBoxName);
-        //        System.Xml.XmlElement xmlTest = (System.Xml.XmlElement)cboSysName.SelectedItem;
-        //        tbxLegalURL.Text = cboSysName.Text;
-        //        if (cboSysName.SelectedValue != null)
-        //        {
-        //            testURL = xmlTest.LastChild.InnerText;
-        //            tbxLegalURL.Text = testURL;
-        //        }
-        //        tbxLegalURL.Focus();
-        //    }
+        //    btnAddToLocal.Tag = "Other";
+        //    AddRecordByTagToLocal(sender,e);
         //}
 
     }

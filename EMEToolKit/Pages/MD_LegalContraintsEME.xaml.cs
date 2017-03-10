@@ -78,9 +78,41 @@ namespace EPAMetadataEditor.Pages
                 var liBoxChildren = AllChildren(liBoxCont);
                 var liBoxName = "tbxUseLimit";
                 var liBoxCtrl = (TextBox)liBoxChildren.First(c => c.Name == liBoxName);
-                liBoxCtrl.Text = "EPA Data License";
+                liBoxCtrl.Text = "EPA Public Domain License";
                 liBoxCtrl.Focus();
             }
+            tbxChangeFocus.Focus();
+        }
+
+        private void AddToLocalSoRN(object sender, RoutedEventArgs e)
+        {
+            //add othConsts xml node
+            btnAddToLocalSoRN.Tag = "Other";
+            AddRecordByTagToLocal(sender, e);
+
+            //add useLimit xml node
+            btnAddToLocalSoRN.Tag = "UseLimit";
+            AddRecordByTagToLocal(sender, e);
+
+            //update useLimit content
+            tbxUseLimitType.Focus();
+            tbxUseLimitType.Text = "FederalRegister.gov System of Records Notice";
+            tbxChangeFocus.Focus();
+        }
+
+        private void AddToLocalDataLic(object sender, RoutedEventArgs e)
+        {
+            //add othConsts xml node
+            btnAddToLocalDataLic.Tag = "Other";
+            AddRecordByTagToLocal(sender, e);
+            
+            //add useLimit xml node
+            btnAddToLocalDataLic.Tag = "UseLimit";
+            AddRecordByTagToLocal(sender, e);
+
+            //update useLimit content
+            tbxUseLimitType.Focus();
+            tbxUseLimitType.Text = "EPA Public Domain License";
             tbxChangeFocus.Focus();
         }
     }

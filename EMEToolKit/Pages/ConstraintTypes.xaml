@@ -76,7 +76,7 @@
             <!-- legal contstraints -->
             <ListBox Style="{DynamicResource EditorNoScrollListBoxStyle}">
                 <ListBox.ItemsSource>
-                    <Binding XPath="LegConsts[not(useLimit) or useLimit[not(contains(. , 'FederalRegister.gov System of Records Notice'))]]"/>
+                    <Binding XPath="LegConsts[not(useLimit) or (useLimit[not(contains(. , 'FederalRegister.gov System of Records Notice'))] and useLimit[not(contains(. , 'EPA Public Domain License'))])]"/>
                 </ListBox.ItemsSource>
                 <ListBox.ItemsPanel>
                     <ItemsPanelTemplate>
@@ -102,10 +102,10 @@
                 </ListBox.ItemTemplate>
             </ListBox>
 
-            <!-- legal contstraints EPA Data License-->
+            <!-- legal contstraints EPA Public Domain License-->
             <ListBox Style="{DynamicResource EditorNoScrollListBoxStyle}">
                 <ListBox.ItemsSource>
-                    <Binding XPath="LegConsts[useLimit[contains(. , 'EPA Data License')]]"/>
+                    <Binding XPath="LegConsts[useLimit[contains(. , 'EPA Public Domain License')]]"/>
                 </ListBox.ItemsSource>
                 <ListBox.ItemsPanel>
                     <ItemsPanelTemplate>
@@ -122,10 +122,10 @@
                                             <Image Style="{DynamicResource DeleteImageStyle}" Source="../Icons/GenericDeleteRed16.png"/>
                                         </Button>
                                         <!--<Label Style="{DynamicResource EditorHExpanderLabel}"  Content="{x:Static prop:Resources.LBL_CONSTS_LEGAL}"/>-->
-                                        <Label Style="{DynamicResource EditorHExpanderLabel}"  Content="EPA Data License" FontWeight="Bold"/>
+                                        <Label Style="{DynamicResource EditorHExpanderLabel}"  Content="EPA Public Domain License" FontWeight="Bold"/>
                                     </DockPanel>
                                 </Expander.Header>
-                                <pages:MD_LegalConstraintsSOR/>
+                                <pages:MD_LegalConstraintsEpaDataLic/>
                             </Expander>
                         </Border>
                     </DataTemplate>

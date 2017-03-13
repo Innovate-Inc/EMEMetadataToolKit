@@ -103,6 +103,10 @@
   </ItemGroup>
   <ItemGroup>
     <Reference Include="ESRI.ArcGIS.MetadataEditor" />
+    <Page Include="Pages\CI_ResponsiblePartyPoC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\BooleanValueSync.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -836,6 +840,9 @@
   </ItemGroup>
   <ItemGroup>
     <Reference Include="ESRI.ArcGIS.MetadataEditor" />
+    <Compile Include="Pages\CI_ResponsiblePartyPoC.xaml.cs">
+      <DependentUpon>CI_ResponsiblePartyPoC.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\CI_CitationEPA.xaml.cs">
       <DependentUpon>CI_CitationEPA.xaml</DependentUpon>
     </Compile>

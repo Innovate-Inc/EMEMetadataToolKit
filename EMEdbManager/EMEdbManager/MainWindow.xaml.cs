@@ -94,12 +94,14 @@ namespace EMEdbManager
             XmlElement xmlEleKeyword = doc.CreateElement("themekey");
             XmlElement xmlEleDefault = doc.CreateElement("default");
             xmlEleThesaName.InnerText = "EPA GIS Keyword Thesaurus";
+            xmlEleKeyword.InnerText = "New Keyword";
             xmlEleDefault.InnerText = "False";
 
             epaElement.AppendChild(xmlEleThesaName);
             epaElement.AppendChild(xmlEleKeyword);
             epaElement.AppendChild(xmlEleDefault);
             doc.DocumentElement.InsertAfter(epaElement, doc.DocumentElement.LastChild);
+            lbxThemekeyEpa.SelectedIndex = lbxThemekeyEpa.Items.Count - 1;
 
         }
 
@@ -111,12 +113,14 @@ namespace EMEdbManager
             XmlElement xmlEleKeyword = doc.CreateElement("themekey");
             XmlElement xmlEleDefault = doc.CreateElement("default");
             xmlEleThesaName.InnerText = "User";
+            xmlEleKeyword.InnerText = "New Keyword";
             xmlEleDefault.InnerText = "False";
 
             userElement.AppendChild(xmlEleThesaName);
             userElement.AppendChild(xmlEleKeyword);
             userElement.AppendChild(xmlEleDefault);
             doc.DocumentElement.InsertAfter(userElement, doc.DocumentElement.LastChild);
+            lbxThemekeyUser.SelectedIndex = lbxThemekeyUser.Items.Count - 1;
         }
 
         private void btnAddThemekeyPlace_Click(object sender, RoutedEventArgs e)
@@ -126,12 +130,14 @@ namespace EMEdbManager
             XmlElement xmlEleThesaName = doc.CreateElement("placekt");
             XmlElement xmlEleKeyword = doc.CreateElement("placekey");
             XmlElement xmlEleDefault = doc.CreateElement("default");
+            xmlEleKeyword.InnerText = "New Keyword";
             xmlEleDefault.InnerText = "False";
 
             placeElement.AppendChild(xmlEleThesaName);
             placeElement.AppendChild(xmlEleKeyword);
             placeElement.AppendChild(xmlEleDefault);
             doc.DocumentElement.InsertAfter(placeElement, doc.DocumentElement.LastChild);
+            lbxThemekeyPlace.SelectedIndex = lbxThemekeyPlace.Items.Count - 1;
         }
 
         private void btnAddSecConsts_Click(object sender, RoutedEventArgs e)
@@ -146,6 +152,7 @@ namespace EMEdbManager
             xmlEleSecCnst.AppendChild(xmlEleSecNote);
             xmlEleSecCnst.AppendChild(xmlEleSecClass);
             doc.DocumentElement.InsertAfter(xmlEleSecCnst, doc.DocumentElement.LastChild);
+            lbxSecConsts.SelectedIndex = lbxSecConsts.Items.Count - 1;
         }
 
         private void btnAddSOR_Click(object sender, RoutedEventArgs e)
@@ -159,37 +166,48 @@ namespace EMEdbManager
             xmlEleSOR.AppendChild(xmlEleSORname);
             xmlEleSOR.AppendChild(xmlEleSORurl);
             doc.DocumentElement.InsertAfter(xmlEleSOR, doc.DocumentElement.LastChild);
+            lbxSystemofRecords.SelectedIndex = lbxSystemofRecords.Items.Count - 1;
         }
 
         private void btnDeletePlaceKeyword_Click(object sender, RoutedEventArgs e)
         {
+            XmlDocument doc = XmlRecord_ThemeKeyPlace.Document;
+            string source = XmlRecord_ThemeKeyPlace.Source.LocalPath;
+            XmlNode themek = doc.SelectSingleNode("/emeData/KeywordsPlace[placekey[text()='" + tbKeywordPlace.Text + "']]");
 
+            themek.ParentNode.RemoveChild(themek);
+            XmlRecord_ThemeKeyPlace.Document.Save(source);
         }
 
         private void btnDeleteEpaKeyword_Click(object sender, RoutedEventArgs e)
         {
+            XmlDocument doc = XmlRecord_ThemeKeyEpa.Document;
+            string source = XmlRecord_ThemeKeyEpa.Source.LocalPath;
+            XmlNode themek = doc.SelectSingleNode("/emeData/KeywordsEPA[themekey[text()='" + tbKeywordEpa.Text + "']]");
 
+            themek.ParentNode.RemoveChild(themek);
+            XmlRecord_ThemeKeyEpa.Document.Save(source);
         }
 
         private void btnDeleteUserKeyword_Click(object sender, RoutedEventArgs e)
         {
+            XmlDocument doc = XmlRecord_ThemeKeyUser.Document;
+            string source = XmlRecord_ThemeKeyUser.Source.LocalPath;
+            XmlNode themek = doc.SelectSingleNode("/emeData/KeywordsUser[themekey[text()='" + tbKeywordUser.Text + "']]");
 
+            themek.ParentNode.RemoveChild(themek);
+            XmlRecord_ThemeKeyUser.Document.Save(source);
         }
 
         private void btnDeleteSecConsts_Click(object sender, RoutedEventArgs e)
         {
+            XmlDocument doc = XmlRecord_SecConsts.Document;
+            string source = XmlRecord_SecConsts.Source.LocalPath;
+            XmlNode sconst = doc.SelectSingleNode("/emeData/SecurityConstraints[usenote[text()='" + tbUseNote.Text + "']]");
 
+            sconst.ParentNode.RemoveChild(sconst);
+            XmlRecord_SecConsts.Document.Save(source);
         }
 
-        private void btnTestThemekeyUser_Click(object sender, RoutedEventArgs e)
-        {
-            XmlDocument doc = XmlRecord_ThemeKeyUser.Document;
-            string source = XmlRecord_ThemeKeyUser.Source.LocalPath;
-            foreach (XmlNode objNode in doc.SelectNodes("KeywordsUser"))
-                if (objNode.SelectSingleNode("themekey").InnerText == tbKeywordUser.Text)
-                    objNode.ParentNode.RemoveChild(objNode);
-
-            XmlRecord_ThemeKeyUser.Document.Save(source);
-        }
     }
 }

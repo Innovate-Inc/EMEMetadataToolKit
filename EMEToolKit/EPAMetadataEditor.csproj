@@ -51,15 +51,15 @@
     <Reference Include="ESRI.ArcGIS.Geodatabase" />
     <Reference Include="ESRI.ArcGIS.Geoprocessing" />
     <Reference Include="ESRI.ArcGIS.ItemIndex">
-      <HintPath>C:\Program Files (x86)\ArcGIS\Desktop10.4\bin\ESRI.ArcGIS.ItemIndex.dll</HintPath>
+      <HintPath>..\..\..\Program Files (x86)\ArcGIS\Desktop10.5\bin\ESRI.ArcGIS.ItemIndex.dll</HintPath>
     </Reference>
     <Reference Include="ESRI.ArcGIS.MetadataEditor, Version=10.4.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\Program Files (x86)\ArcGIS\Desktop10.4\bin\ESRI.ArcGIS.MetadataEditor.dll</HintPath>
+      <HintPath>..\..\..\Program Files (x86)\ArcGIS\Desktop10.5\bin\ESRI.ArcGIS.MetadataEditor.dll</HintPath>
     </Reference>
     <Reference Include="ESRI.ArcGIS.Search" />
     <Reference Include="ESRI.ArcGIS.SearchCore">
-      <HintPath>C:\Program Files (x86)\ArcGIS\Desktop10.4\bin\ESRI.ArcGIS.SearchCore.dll</HintPath>
+      <HintPath>..\..\..\Program Files (x86)\ArcGIS\Desktop10.5\bin\ESRI.ArcGIS.SearchCore.dll</HintPath>
     </Reference>
     <Reference Include="ESRI.ArcGIS.System" />
     <Reference Include="ESRI.ArcGIS.Version" />
@@ -98,11 +98,15 @@
     </Reference>
     <Reference Include="WPFToolkit">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\Program Files (x86)\ArcGIS\Desktop10.4\bin\WPFToolkit.dll</HintPath>
+      <HintPath>..\..\..\Program Files (x86)\ArcGIS\Desktop10.5\bin\WPFToolkit.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="ESRI.ArcGIS.MetadataEditor" />
+    <Page Include="Pages\CI_ResponsiblePartyPoC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\BooleanValueSync.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -167,11 +171,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\MD_LegalConstraintsEpaDataLic.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\MD_LegalConstraintsSOR.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\MD_LegalContraintsEME.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\MD_RestrictionCodeEpaDataLic.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -828,6 +840,9 @@
   </ItemGroup>
   <ItemGroup>
     <Reference Include="ESRI.ArcGIS.MetadataEditor" />
+    <Compile Include="Pages\CI_ResponsiblePartyPoC.xaml.cs">
+      <DependentUpon>CI_ResponsiblePartyPoC.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\CI_CitationEPA.xaml.cs">
       <DependentUpon>CI_CitationEPA.xaml</DependentUpon>
     </Compile>
@@ -872,11 +887,17 @@
     <Compile Include="Pages\MD_KeywordsUser.xaml.cs">
       <DependentUpon>MD_KeywordsUser.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\MD_LegalConstraintsEpaDataLic.xaml.cs">
+      <DependentUpon>MD_LegalConstraintsEpaDataLic.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\MD_LegalConstraintsSOR.xaml.cs">
       <DependentUpon>MD_LegalConstraintsSOR.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\MD_LegalContraintsEME.xaml.cs">
       <DependentUpon>MD_LegalContraintsEME.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\MD_RestrictionCodeEpaDataLic.xaml.cs">
+      <DependentUpon>MD_RestrictionCodeEpaDataLic.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\MD_RestrictionCodeSOR.xaml.cs">
       <DependentUpon>MD_RestrictionCodeSOR.xaml</DependentUpon>
@@ -1367,6 +1388,12 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="EMEdb\OnlineProtocol.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons\help.rnd.transparent.png" />
+    <Resource Include="Icons\help.rnd.white.png" />
+    <Resource Include="Icons\info.rnd.transparent.png" />
+    <Resource Include="Icons\info.rnd.white.png" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

@@ -349,11 +349,18 @@
                                 <Expander Style="{DynamicResource EditorExpander2Style}" IsExpanded="{Binding XPath=date/@editorExpand, Mode=TwoWay}">
                                     <Expander.Header>
                                         <!--<Label Style="{DynamicResource EditorHExpanderLabel}" Content="{x:Static r:Resources.LBL_DATES}"/>-->
-                                        <Label Style="{DynamicResource EditorHExpanderLabel}">
-                                            <Hyperlink NavigateUri="https://www.epa.gov/geospatial/epa-metadata-technical-specification#last-update" RequestNavigate="Hyperlink_RequestNavigate">
-                                                <TextBlock Text="{x:Static r:Resources.LBL_DATES}" />
-                                            </Hyperlink>
-                                        </Label>
+                                        <StackPanel Orientation="Horizontal">
+                                            <Label Style="{DynamicResource EditorHExpanderLabel}">
+                                                <Hyperlink NavigateUri="https://www.epa.gov/geospatial/epa-metadata-technical-specification#last-update" RequestNavigate="Hyperlink_RequestNavigate">
+                                                    <TextBlock Text="{x:Static r:Resources.LBL_DATES}" />
+                                                </Hyperlink>
+                                            </Label>
+                                            <Label VerticalAlignment="Center" HorizontalAlignment="Left" ToolTip="Link to Style Guide">
+                                                <Hyperlink NavigateUri="https://www.epa.gov/geospatial/epa-metadata-technical-specification" RequestNavigate="Hyperlink_RequestNavigate" TextDecorations="{x:Null}">
+                                                    <Image Source="../Icons/info.rnd.white.png" RenderOptions.BitmapScalingMode="Fant" MaxHeight="14"/>
+                                                </Hyperlink>
+                                            </Label>
+                                        </StackPanel>
                                     </Expander.Header>
                                     <Grid Style="{DynamicResource EditorSub2NoIndent}">
                                         <Grid.RowDefinitions>

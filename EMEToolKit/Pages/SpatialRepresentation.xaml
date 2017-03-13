@@ -134,11 +134,18 @@
                         <p:EME_Header/>
                         <!-- page title -->
                         <!--<Label Style="{DynamicResource EditorPageTitle}" Content="{x:Static r:Resources.SEC_SPATREF}"/>-->
-                        <Label Style="{DynamicResource EditorPageTitle}">
-                            <Hyperlink NavigateUri="https://www.epa.gov/geospatial/epa-metadata-technical-specification#spatial-data-representation" RequestNavigate="Hyperlink_RequestNavigate">
-                                <TextBlock Text="{x:Static r:Resources.SEC_SPATREF}" FontWeight="Bold"/>
-                            </Hyperlink>
-                        </Label>
+                        <StackPanel Orientation="Horizontal">
+                            <Label Style="{DynamicResource EditorPageTitle}">
+                                <Hyperlink NavigateUri="https://www.epa.gov/geospatial/epa-metadata-technical-specification#spatial-data-representation" RequestNavigate="Hyperlink_RequestNavigate">
+                                    <TextBlock Text="{x:Static r:Resources.SEC_SPATREF}" FontWeight="Bold"/>
+                                </Hyperlink>
+                            </Label>
+                            <Label VerticalAlignment="Center" HorizontalAlignment="Left" ToolTip="Link to Style Guide">
+                                <Hyperlink NavigateUri="https://www.epa.gov/geospatial/epa-metadata-technical-specification" RequestNavigate="Hyperlink_RequestNavigate" TextDecorations="{x:Null}">
+                                    <Image Source="../Icons/info.rnd.white.png" RenderOptions.BitmapScalingMode="Fant" MaxHeight="14"/>
+                                </Hyperlink>
+                            </Label>
+                        </StackPanel>
                         <!-- grid spatial representation -->
                         <ListBox Style="{DynamicResource EditorNoScrollListBoxStyle}" ItemsSource="{Binding XPath=spatRepInfo[GridSpatRep]}">
                             <ListBox.ItemsPanel>

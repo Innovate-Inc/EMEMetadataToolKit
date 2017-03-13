@@ -79,7 +79,7 @@
                                                     </DockPanel>
                                                 </Expander.Header>
                                                 <!-- party -->
-                                                <p:CI_ResponsibleParty v:Nav.AnchorName="party" x:Name="responsibleParty"/>
+                                                <p:CI_ResponsiblePartyPoC v:Nav.AnchorName="party" x:Name="responsibleParty"/>
                                             </Expander>
                                         </Border>
                                     </DataTemplate>

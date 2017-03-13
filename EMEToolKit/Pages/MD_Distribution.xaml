@@ -167,6 +167,11 @@
                                                     <TextBlock Text="{x:Static r:Resources.LBL_DIST_TRANS}" FontWeight="Bold"/>
                                                 </Hyperlink>
                                             </Label>
+                                            <Label VerticalAlignment="Center" HorizontalAlignment="Left" ToolTip="Link to Style Guide">
+                                                <Hyperlink NavigateUri="https://www.epa.gov/geospatial/epa-metadata-technical-specification" RequestNavigate="Hyperlink_RequestNavigate" TextDecorations="{x:Null}">
+                                                    <Image Source="../Icons/info.rnd.white.png" RenderOptions.BitmapScalingMode="Fant" MaxHeight="14"/>
+                                                </Hyperlink>
+                                            </Label>
                                         </DockPanel>
                                     </Expander.Header>
                                     <!-- digital transfer options -->

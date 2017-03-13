@@ -68,5 +68,52 @@ namespace EPAMetadataEditor.Pages
             Process.Start(new ProcessStartInfo(e.Uri.AbsoluteUri));
             e.Handled = true;
         }
+
+        private void btnAddEpaDL_Click(object sender, RoutedEventArgs e)
+        {
+            ListBox liBox = (ListBox)lbxLegalConstsUseLimit;
+            foreach (var liBoxItem in liBox.Items)
+            {
+                var liBoxCont = liBox.ItemContainerGenerator.ContainerFromItem(liBoxItem);
+                var liBoxChildren = AllChildren(liBoxCont);
+                var liBoxName = "tbxUseLimit";
+                var liBoxCtrl = (TextBox)liBoxChildren.First(c => c.Name == liBoxName);
+                liBoxCtrl.Text = "EPA Public Domain License";
+                liBoxCtrl.Focus();
+            }
+            tbxChangeFocus.Focus();
+        }
+
+        private void AddToLocalSoRN(object sender, RoutedEventArgs e)
+        {
+            //add othConsts xml node
+            btnAddToLocalSoRN.Tag = "Other";
+            AddRecordByTagToLocal(sender, e);
+
+            //add useLimit xml node
+            btnAddToLocalSoRN.Tag = "UseLimit";
+            AddRecordByTagToLocal(sender, e);
+
+            //update useLimit content
+            tbxUseLimitType.Focus();
+            tbxUseLimitType.Text = "FederalRegister.gov System of Records Notice";
+            tbxChangeFocus.Focus();
+        }
+
+        private void AddToLocalDataLic(object sender, RoutedEventArgs e)
+        {
+            //add othConsts xml node
+            btnAddToLocalDataLic.Tag = "Other";
+            AddRecordByTagToLocal(sender, e);
+            
+            //add useLimit xml node
+            btnAddToLocalDataLic.Tag = "UseLimit";
+            AddRecordByTagToLocal(sender, e);
+
+            //update useLimit content
+            tbxUseLimitType.Focus();
+            tbxUseLimitType.Text = "EPA Public Domain License";
+            tbxChangeFocus.Focus();
+        }
     }
 }

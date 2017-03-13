@@ -220,12 +220,18 @@
                     <DataTemplate>
                         <DockPanel LastChildFill="True" Background="LemonChiffon">
                             <!--<Label DockPanel.Dock="Left" Style="{DynamicResource EditorHLabelNoIdentStyle}" Content="{x:Static r:Resources.LBL_ITEMINFO_TITLE}" Background="Red"/>-->
-                            <Label DockPanel.Dock="Left" Style="{DynamicResource EditorHLabelNoIdentStyle}">
-                                <Hyperlink NavigateUri="https://www.epa.gov/geospatial/epa-metadata-technical-specification#title" RequestNavigate="Hyperlink_RequestNavigate">
-                                    <TextBlock Text="{x:Static r:Resources.LBL_ITEMINFO_TITLE}" FontWeight="Bold"/>
+                            <!--<Label DockPanel.Dock="Left" Style="{DynamicResource EditorHLabelNoIdentStyle}" Content="{x:Static r:Resources.LBL_ITEMINFO_TITLE}" FontWeight="Bold"/>-->
+                            <Label Style="{DynamicResource EditorVLabelNoIdentStyle}" ToolTip="Link to Technical Specification" >
+                                <Hyperlink NavigateUri="https://www.epa.gov/geospatial/epa-metadata-technical-specification#title" RequestNavigate="Hyperlink_RequestNavigate" TextDecorations="{x:Null}">
+                                    <TextBlock Text="{x:Static r:Resources.LBL_ITEMINFO_TITLE}" FontWeight="Bold" />
                                 </Hyperlink>
                             </Label>
-                            <TextBox Style="{DynamicResource EditorTextBoxStyle}" ToolTip="{x:Static r:Definitions.CI_Citation_title}" v:Nav.AnchorName="resTitle,resTitle" Text="{e:MetadataElementSync XPath=resTitle}"/>
+                            <Label VerticalAlignment="Center" HorizontalAlignment="Left" ToolTip="Link to Style Guide">
+                                <Hyperlink NavigateUri="https://www.epa.gov/geospatial/epa-metadata-technical-specification#title" RequestNavigate="Hyperlink_RequestNavigate" TextDecorations="{x:Null}">
+                                    <Image Source="../Icons/info.rnd.white.png" RenderOptions.BitmapScalingMode="Fant" MaxHeight="14" HorizontalAlignment="Left"/>
+                                </Hyperlink>
+                            </Label>
+                          <TextBox Style="{DynamicResource EditorTextBoxStyle}" ToolTip="{x:Static r:Definitions.CI_Citation_title}" v:Nav.AnchorName="resTitle,resTitle" Text="{e:MetadataElementSync XPath=resTitle}"/>
                         </DockPanel>
                     </DataTemplate>
                 </ListBox.ItemTemplate>
@@ -271,9 +277,20 @@
 
                             <!-- keywords -->
                             <DockPanel>
-                                <Label DockPanel.Dock="Left" Style="{DynamicResource EditorHLabelNoIdentStyle}">
+                                <!--<Label DockPanel.Dock="Left" Style="{DynamicResource EditorHLabelNoIdentStyle}" Content="{x:Static r:Resources.LBL_ITEMINFO_KEY}" FontWeight="Bold"/>-->
+                                <Label DockPanel.Dock="Left" Style="{DynamicResource EditorHLabelNoIdentStyle}" ToolTip="Link to Technical Specification" >
                                     <Hyperlink NavigateUri="https://www.epa.gov/geospatial/epa-metadata-technical-specification#tags-general" RequestNavigate="Hyperlink_RequestNavigate">
                                         <TextBlock Text="{x:Static r:Resources.LBL_ITEMINFO_KEY}" FontWeight="Bold"/>
+                                    </Hyperlink>
+                                </Label>
+                                <!--<Label VerticalAlignment="Center" HorizontalAlignment="Left" ToolTip="Link to Style Guide">
+                                    <Hyperlink NavigateUri="https://www.epa.gov/geospatial/epa-metadata-technical-specification#tags-general" RequestNavigate="Hyperlink_RequestNavigate" TextDecorations="{x:Null}">
+                                        <Image Source="../Icons/help.rnd.white.png" RenderOptions.BitmapScalingMode="Fant" MaxHeight="14"/>
+                                    </Hyperlink>
+                                </Label>-->
+                                <Label VerticalAlignment="Center" HorizontalAlignment="Left" ToolTip="Link to Style Guide">
+                                    <Hyperlink NavigateUri="https://www.epa.gov/geospatial/epa-metadata-technical-specification#tags-general" RequestNavigate="Hyperlink_RequestNavigate" TextDecorations="{x:Null}">
+                                        <Image Source="../Icons/info.rnd.white.png" RenderOptions.BitmapScalingMode="Fant" MaxHeight="14"/>
                                     </Hyperlink>
                                 </Label>
                                 <Button Name="btnDelSearchTags" Click="btnDelSearchTags_Click" Style="{DynamicResource TopButton}">
@@ -314,12 +331,25 @@
                                 <ListBox.ItemTemplate>
                                     <DataTemplate>
                                         <StackPanel Background="LemonChiffon">
-                                            <!--<Label Style="{DynamicResource EditorVLabelNoIdentStyle}" Content="{x:Static r:Resources.LBL_ITEMINFO_SNIP}" Background="Red"/>-->
-                                            <Label DockPanel.Dock="Left" Style="{DynamicResource EditorHLabelNoIdentStyle}">
-                                                <Hyperlink NavigateUri="https://www.epa.gov/geospatial/epa-metadata-technical-specification#description" RequestNavigate="Hyperlink_RequestNavigate">
-                                                    <TextBlock Text="{x:Static r:Resources.LBL_ITEMINFO_SNIP}" FontWeight="Bold"/>
-                                                </Hyperlink>
-                                            </Label>
+                                            <DockPanel>
+                                                <!--<Label Style="{DynamicResource EditorVLabelNoIdentStyle}" Content="{x:Static r:Resources.LBL_ITEMINFO_SNIP}"/>-->
+                                                <!--<Label Style="{DynamicResource EditorVLabelNoIdentStyle}" Content="{x:Static r:Resources.LBL_ITEMINFO_SNIP}" Background="Red"/>-->
+                                                <Label DockPanel.Dock="Left" Style="{DynamicResource EditorHLabelNoIdentStyle}" ToolTip="Link to Technical Specification" >
+                                                    <Hyperlink NavigateUri="https://www.epa.gov/geospatial/epa-metadata-technical-specification#description" RequestNavigate="Hyperlink_RequestNavigate">
+                                                        <TextBlock Text="{x:Static r:Resources.LBL_ITEMINFO_SNIP}" FontWeight="Bold"/>
+                                                    </Hyperlink>
+                                                </Label>
+                                                <!--<Label VerticalAlignment="Center" HorizontalAlignment="Left" ToolTip="Link to Style Guide">
+                                                    <Hyperlink NavigateUri="https://www.epa.gov/geospatial/epa-metadata-technical-specification#description" RequestNavigate="Hyperlink_RequestNavigate" TextDecorations="{x:Null}">
+                                                        <Image Source="../Icons/help.rnd.white.png" RenderOptions.BitmapScalingMode="Fant" MaxHeight="14"/>
+                                                    </Hyperlink>
+                                                </Label>-->
+                                                <Label VerticalAlignment="Center" HorizontalAlignment="Left" ToolTip="Link to Style Guide">
+                                                    <Hyperlink NavigateUri="https://www.epa.gov/geospatial/epa-metadata-technical-specification#description" RequestNavigate="Hyperlink_RequestNavigate" TextDecorations="{x:Null}">
+                                                        <Image Source="../Icons/info.rnd.white.png" RenderOptions.BitmapScalingMode="Fant" MaxHeight="14"/>
+                                                    </Hyperlink>
+                                                </Label>
+                                            </DockPanel>
                                             <ListBox Style="{DynamicResource EditorNoScrollListBoxStyle}" ItemsSource="{Binding XPath=dataIdInfo/idAbs}">
                                                 <ListBox.ItemTemplate>
                                                     <DataTemplate>

@@ -34,6 +34,8 @@ using System.Security.Cryptography;
 
 using ESRI.ArcGIS.Metadata.Editor;
 using ESRI.ArcGIS.Metadata.Editor.Pages;
+using System.Net;
+
 namespace EPAMetadataEditor.Pages
 {
     /// <summary>
@@ -44,6 +46,7 @@ namespace EPAMetadataEditor.Pages
         private XmlDocument _contactsDoc = null;
         private XmlDocument _contactsEsri = null;
         private XmlDocument _contactsEpa = null;
+        private XmlDocument _contactsBAK = null;
         public string partySource = null;
         public ContactManager()
         {
@@ -160,9 +163,53 @@ namespace EPAMetadataEditor.Pages
             _contactsDoc = new XmlDocument();
             _contactsEsri = new XmlDocument();
             _contactsEpa = new XmlDocument();
-            XmlDocument _contactsBAK = new XmlDocument();
+            _contactsBAK = new XmlDocument();
+            XmlDocument _contactsWEB = new XmlDocument();
+
             string filePathEsri = Environment.GetFolderPath(Environment.SpecialFolder.Personal) + "\\ArcGIS\\Descriptions\\";
-            string filePathEpa = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\Innovate! Inc\\EME Toolkit\\EMEdb\\";
+            string filePathEme = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\Innovate! Inc\\EME Toolkit\\EMEdb\\";
+
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create("https://edg.epa.gov/EME/contacts.xml");
+            request.Timeout = 15000;
+            request.Method = "HEAD"; //test URL without downloading the content
+            try
+            {
+                using (HttpWebResponse response = (HttpWebResponse)request.GetResponse())
+                {
+                    if (response.StatusCode.ToString() == "OK")
+                    {
+                        //MessageBoxResult webResponse = MessageBox.Show("EME contacts loaded from https://edg.epa.gov/EME/contacts.xml", "EME 5.0 Web Request", MessageBoxButton.OK, MessageBoxImage.Information);
+                        try { _contactsWEB.Load("https://edg.epa.gov/EME/contacts.xml"); }
+                        catch (System.IO.FileNotFoundException)
+                        {
+                            _contactsWEB.LoadXml(
+                            "<contacts> \n" +
+                            "  <contact> \n" +
+                            "    <editorSource></editorSource> \n" +
+                            "    <editorDigest></editorDigest> \n" +
+                            "    <rpIndName></rpIndName> \n" +
+                            "    <rpOrgName></rpOrgName> \n" +
+                            "    <rpPosName></rpPosName> \n" +
+                            "    <editorSave></editorSave> \n" +
+                            "    <rpCntInfo></rpCntInfo> \n" +
+                            "  </contact> \n" +
+                            "</contacts>");
+                        }
+                        _contactsWEB.Save(filePathEme + "contacts.xml");
+                    }
+                    else
+                    {
+                        MessageBoxResult webResponse = MessageBox.Show("Error loading contacts from https://edg.epa.gov/EME/contacts.xml." + "\n" + "EME contacts will be loaded from local cache.", "EME 5.0 Web Request", MessageBoxButton.OK, MessageBoxImage.Information);
+                    }
+                }
+            }
+            catch (Exception weberror)
+            {
+                // myerror.Message;
+                {
+                    MessageBoxResult result = MessageBox.Show(weberror.Message + "\n" + "EME contacts will be loaded from local cache.", "EME 5.0 Web Request", MessageBoxButton.OK, MessageBoxImage.Warning);
+                }
+            }
 
             try { _contactsBAK.Load(filePathEsri + "contacts.xml"); }
             catch (System.IO.FileNotFoundException)
@@ -201,7 +248,7 @@ namespace EPAMetadataEditor.Pages
             //_contactsEsri.Save(filePathEsri + "contactManEsri.xml");
 
             //_contactsEpa.PreserveWhitespace = true;
-            try { _contactsEpa.Load(filePathEpa + "contacts.xml"); }
+            try { _contactsEpa.Load(filePathEme + "contacts.xml"); }
             catch (System.IO.FileNotFoundException)
             {
                 _contactsEpa.LoadXml(

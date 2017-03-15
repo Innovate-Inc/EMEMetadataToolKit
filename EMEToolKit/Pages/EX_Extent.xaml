@@ -162,8 +162,8 @@
                                                 <TextBlock Text="{x:Static r:Resources.LBL_EXT_BOX}" FontWeight="Bold"/>
                                             </Hyperlink>
                                         </Label>
-                                        <Label VerticalAlignment="Center" HorizontalAlignment="Left" ToolTip="Link to Style Guide">
-                                            <Hyperlink NavigateUri="https://www.epa.gov/geospatial/epa-metadata-technical-specification" RequestNavigate="Hyperlink_RequestNavigate" TextDecorations="{x:Null}">
+                                        <Label VerticalAlignment="Center" HorizontalAlignment="Left" ToolTip="EME 5.0 Style Guide">
+                                            <Hyperlink NavigateUri="https://www.epa.gov/geospatial/epa-geospatial-metadata-style-guide-using-eme-5#spatial-extent" RequestNavigate="Hyperlink_RequestNavigate" TextDecorations="{x:Null}">
                                                 <Image Source="../Icons/info.rnd.white.png" RenderOptions.BitmapScalingMode="Fant" MaxHeight="14"/>
                                             </Hyperlink>
                                         </Label>
@@ -233,8 +233,8 @@
                                                 <TextBlock Text="{x:Static r:Resources.LBL_EXT_TEMP}" FontWeight="Bold"/>
                                             </Hyperlink>
                                         </Label>
-                                        <Label VerticalAlignment="Center" HorizontalAlignment="Left" ToolTip="Link to Style Guide">
-                                            <Hyperlink NavigateUri="https://www.epa.gov/geospatial/epa-metadata-technical-specification" RequestNavigate="Hyperlink_RequestNavigate" TextDecorations="{x:Null}">
+                                        <Label VerticalAlignment="Center" HorizontalAlignment="Left" ToolTip="EME 5.0 Style Guide">
+                                            <Hyperlink NavigateUri="https://www.epa.gov/geospatial/epa-geospatial-metadata-style-guide-using-eme-5#temporal-extent" RequestNavigate="Hyperlink_RequestNavigate" TextDecorations="{x:Null}">
                                                 <Image Source="../Icons/info.rnd.white.png" RenderOptions.BitmapScalingMode="Fant" MaxHeight="14"/>
                                             </Hyperlink>
                                         </Label>

@@ -8,10 +8,7 @@
     Loaded="FillXml">
 
     <UserControl.Resources>
-        <!--
-      <!ENTITY % DataIdent '(idCitation, idAbs, idPurp?, idCredit*, idStatus*, idPoC*, resMaint*, graphOver*, dsFormat*, descKeys*, idSpecUse*, resConst*, aggrInfo*, spatRpType*, dataScale*, dataLang+, dataChar*, tpCat*, envirDesc?, geoBox?, geoDesc?, dataExt*, suppInfo?)'
-
-    -->
+        <!-- <!ENTITY % DataIdent '(idCitation, idAbs, idPurp?, idCredit*, idStatus*, idPoC*, resMaint*, graphOver*, dsFormat*, descKeys*, idSpecUse*, resConst*, aggrInfo*, spatRpType*, dataScale*, dataLang+, dataChar*, tpCat*, envirDesc?, geoBox?, geoDesc?, dataExt*, suppInfo?)' -->
         <XmlDataProvider x:Key="XmlRecord" XPath="/" IsAsynchronous="False" IsInitialLoadEnabled="True">
             <x:XData>
                 <ANY xmlns="">
@@ -73,7 +70,6 @@
                             <!-- Publisher -->
                             <ListBox Style="{DynamicResource EditorNoScrollListBoxStyle}">
                                 <ListBox.ItemsSource>
-                                    <!--/metadata/dataIdInfo/idPoC[role/RoleCd[@value='007'] or not(role/RoleCd)]-->
                                     <Binding XPath="idPoC[role/RoleCd[@value='010'] or not(role/RoleCd)]"/>
                                 </ListBox.ItemsSource>
                                 <ListBox.ItemsPanel>
@@ -86,10 +82,7 @@
                                         <Border Style="{DynamicResource EditorBorder2Style}" Background="LemonChiffon">
                                             <Expander Style="{DynamicResource EditorExpander2Style}" IsExpanded="{Binding XPath=@editorExpand, Mode=TwoWay}">
                                                 <Expander.Header>
-                                                    <DockPanel HorizontalAlignment="{Binding HorizontalAlignment,
-                                                        RelativeSource={RelativeSource FindAncestor,
-                                                        AncestorType={x:Type ContentPresenter}},
-                                                        Mode=OneWayToSource}" LastChildFill="True">
+                                                    <DockPanel HorizontalAlignment="{Binding HorizontalAlignment, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ContentPresenter}}, Mode=OneWayToSource}" LastChildFill="True">
                                                         <Button DockPanel.Dock="Right" Click="DeleteItem" Style="{DynamicResource DeleteButton}">
                                                             <Image Style="{DynamicResource DeleteImageStyle}" Source="../Icons/GenericDeleteRed16.png"/>
                                                         </Button>

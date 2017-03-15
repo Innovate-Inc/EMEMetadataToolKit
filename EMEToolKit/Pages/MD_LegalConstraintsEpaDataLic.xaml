@@ -106,9 +106,9 @@
                     <DataTemplate>
                         <StackPanel>
                             <DockPanel Style="{DynamicResource EditorDockPanelStyle}" HorizontalAlignment="{Binding HorizontalAlignment, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ContentPresenter}}, Mode=OneWayToSource}" LastChildFill="True">
-                                <Button DockPanel.Dock="Right" Click="DeleteItem" Style="{DynamicResource DeleteButton}">
+                                <!--<Button DockPanel.Dock="Right" Click="DeleteItem" Style="{DynamicResource DeleteButton}">
                                     <Image Style="{DynamicResource DeleteImageStyle}" Source="../Icons/GenericDeleteRed16.png"/>
-                                </Button>
+                                </Button>-->
                                 <Label Style="{DynamicResource EditorHLabelNoIdentStyle}">
                                     <Hyperlink NavigateUri="https://www.epa.gov/geospatial/epa-metadata-technical-specification#data-license" RequestNavigate="Hyperlink_RequestNavigate">
                                         <TextBlock Text="{e:MetadataBinding XPath=.}" FontWeight="Bold"/>
@@ -145,17 +145,17 @@
 
             <!-- other limitations -->
             <TextBox x:Name="tbxLicenseUrl" Text="{Binding XPath=othConsts}" Style="{DynamicResource TbxHidden}" />
-
+            
             <ListBox x:Name="lbxLegalConstsOtherLimits" Style="{DynamicResource EditorNoScrollListBoxStyle}" ItemsSource="{Binding XPath=othConsts}">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <StackPanel>
                             <DockPanel Style="{DynamicResource EditorDockPanelStyle}" HorizontalAlignment="{Binding HorizontalAlignment, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ContentPresenter}}, Mode=OneWayToSource}" LastChildFill="True">
-                                <Button DockPanel.Dock="Right" Click="DeleteItem" Style="{DynamicResource DeleteButton}">
+                                <!--<Button DockPanel.Dock="Right" Click="DeleteItem" Style="{DynamicResource DeleteButton}">
                                     <Image Style="{DynamicResource DeleteImageStyle}" Source="../Icons/GenericDeleteRed16.png"/>
-                                </Button>
+                                </Button>-->
                                 <Label Style="{DynamicResource EditorHLabelNoIdentStyle}" Content="Open Data License URL"/>
-                                <Label Style="{DynamicResource EditorHLabelNoIdentStyle}" VerticalAlignment="Center" HorizontalAlignment="Left" ToolTip="{x:Static r:Definitions.MD_LegalConstraints_otherConstraints}" Loaded="tbxLegalConstsSystemURL_Loaded">
+                                <Label Style="{DynamicResource EditorHLabelNoIdentStyle}" VerticalAlignment="Center" HorizontalAlignment="Left" ToolTip="{x:Static r:Definitions.MD_LegalConstraints_otherConstraints}" Loaded="tbxLegalConstsSystemURL_Loaded" >
                                     <Hyperlink NavigateUri="https://edg.epa.gov/EPA_Data_License.html" RequestNavigate="Hyperlink_RequestNavigate" TextDecorations="{x:Null}">
                                         <TextBlock x:Name="tbxLegalConstsSystemURL" Text="{e:MetadataBinding XPath=.}" />
                                     </Hyperlink>

@@ -70,14 +70,9 @@ namespace EPAMetadataEditor.Pages
             //if (tbxLegalConstsSystemURL.IsVisible == true);
             tbxLicenseUrl.Focus();
             tbxLicenseUrl.Text = "https://edg.epa.gov/EPA_Data_License.html";
+            tbxLicenseUrl.Focus();
             tbxChangeFocus.Focus();
         }
-
-        //private void btnAddToLocal_Click(object sender, RoutedEventArgs e)
-        //{
-        //    btnAddToLocal.Tag = "Other";
-        //    AddRecordByTagToLocal(sender,e);
-        //}
 
     }
 }

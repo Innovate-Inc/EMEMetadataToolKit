@@ -100,6 +100,7 @@
 
     <Grid Style="{DynamicResource EditorSubPageStyle}">
         <StackPanel>
+            <TextBox x:Name="tbxChangeFocus" Style="{DynamicResource TbxHidden}"/>
 
             <!-- use limitations -->
             <ListBox Style="{DynamicResource EditorNoScrollListBoxStyle}" ItemsSource="{Binding XPath=useLimit}">
@@ -107,9 +108,9 @@
                     <DataTemplate>
                         <StackPanel>
                             <DockPanel Style="{DynamicResource EditorDockPanelStyle}" HorizontalAlignment="{Binding HorizontalAlignment, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ContentPresenter}}, Mode=OneWayToSource}" LastChildFill="True">
-                                <Button DockPanel.Dock="Right" Click="DeleteItem" Style="{DynamicResource DeleteButton}">
+                                <!--<Button DockPanel.Dock="Right" Click="DeleteItem" Style="{DynamicResource DeleteButton}">
                                     <Image Style="{DynamicResource DeleteImageStyle}" Source="../Icons/GenericDeleteRed16.png"/>
-                                </Button>
+                                </Button>-->
                                 <!--<Label Style="{DynamicResource EditorHLabelNoIdentStyle}" Content="{e:MetadataBinding XPath=.}" v:Nav.AnchorName="useLimit" ToolTip="{x:Static r:Definitions.MD_Constraints_useLimitation}"/>-->
                                 <Label Style="{DynamicResource EditorHLabelNoIdentStyle}">
                                     <Hyperlink NavigateUri="https://www.epa.gov/geospatial/epa-metadata-technical-specification#system-of-records" RequestNavigate="Hyperlink_RequestNavigate">
@@ -150,9 +151,9 @@
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <DockPanel Style="{DynamicResource EditorDockPanelStyle}" HorizontalAlignment="{Binding HorizontalAlignment, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ContentPresenter}}, Mode=OneWayToSource}" LastChildFill="True">
-                            <Button DockPanel.Dock="Right" Click="DeleteItem" Style="{DynamicResource DeleteButton}">
+                            <!--<Button DockPanel.Dock="Right" Click="DeleteItem" Style="{DynamicResource DeleteButton}">
                                 <Image Style="{DynamicResource DeleteImageStyle}" Source="../Icons/GenericDeleteRed16.png"/>
-                            </Button>
+                            </Button>-->
                             <Label DockPanel.Dock="Left" Style="{DynamicResource EditorHLabelNoIdentStyle}" Content="System of Record"/>
                             <Grid>
                                 <ComboBox x:Name="cboSystemNames" DataContext="{DynamicResource EPAData}" Style="{DynamicResource EditorHComboBoxStyle}"

@@ -65,10 +65,7 @@
                                         <Border Style="{DynamicResource EditorBorder2Style}" >
                                             <Expander Style="{DynamicResource EditorExpander2Style}" IsExpanded="{Binding XPath=@editorExpand, Mode=TwoWay}">
                                                 <Expander.Header>
-                                                    <DockPanel HorizontalAlignment="{Binding HorizontalAlignment,
-                                                        RelativeSource={RelativeSource FindAncestor,
-                                                        AncestorType={x:Type ContentPresenter}},
-                                                        Mode=OneWayToSource}" LastChildFill="True">
+                                                    <DockPanel HorizontalAlignment="{Binding HorizontalAlignment, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ContentPresenter}}, Mode=OneWayToSource}" LastChildFill="True">
                                                         <Button DockPanel.Dock="Right" Click="DeleteItem" Style="{DynamicResource DeleteButton}">
                                                             <Image Style="{DynamicResource DeleteImageStyle}" Source="../Icons/GenericDeleteRed16.png"/>
                                                         </Button>

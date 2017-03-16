@@ -202,10 +202,6 @@
                             <Border Style="{DynamicResource EditorBorder2Style}" Background="LemonChiffon">
                                 <StackPanel>
                                     <!-- topics -->
-                                    <!--<Label Style="{DynamicResource EditorVLabelNoIdentStyle}" 
-                                           ToolTip="{x:Static r:Definitions.MD_DataIdentification_topicCategory}"
-                                           v:Nav.AnchorName="topics,tpCatBag"
-                                           Content="{x:Static r:Resources.LBL_DESC_TOPICS}" />-->
                                     <StackPanel Orientation="Horizontal">
                                         <Label Style="{DynamicResource EditorVLabelNoIdentStyle}" 
                                            ToolTip="{x:Static r:Definitions.MD_DataIdentification_topicCategory}"
@@ -215,8 +211,8 @@
                                                 <TextBlock Text="ISO 19115 Topic Categories" FontWeight="Bold" />
                                             </Hyperlink>
                                         </Label>
-                                        <Label VerticalAlignment="Center" HorizontalAlignment="Left" ToolTip="Link to Style Guide">
-                                            <Hyperlink NavigateUri="https://www.epa.gov/geospatial/epa-metadata-technical-specification" RequestNavigate="Hyperlink_RequestNavigate" TextDecorations="{x:Null}">
+                                        <Label VerticalAlignment="Center" HorizontalAlignment="Left" ToolTip="EME 5.0 Style Guide">
+                                            <Hyperlink NavigateUri="https://www.epa.gov/geospatial/epa-geospatial-metadata-style-guide-using-eme-5#tags-iso" RequestNavigate="Hyperlink_RequestNavigate" TextDecorations="{x:Null}">
                                                 <Image Source="../Icons/info.rnd.white.png" RenderOptions.BitmapScalingMode="Fant" MaxHeight="14"/>
                                             </Hyperlink>
                                         </Label>
@@ -256,30 +252,6 @@
                                 </StackPanel>
                             </Border>
 
-                            <!-- content type -->
-                            <!--<Border Style="{DynamicResource EditorBorder2Style}">
-                                <DockPanel LastChildFill="True">
-                                    <Label DockPanel.Dock="Left" Style="{DynamicResource EditorHLabelNoIdentStyle}" 
-                                           Content="{x:Static r:Resources.LBL_IMS_CONTENT_TYPE}"/>
-                                    <CheckBox Style="{DynamicResource EditorCheckBoxStyle}" DockPanel.Dock="Right"
-                                              e:MetadataStyle.OnlyProfiles="FGDC"
-                                              ToolTip="{x:Static r:Definitions.ESRI_exportContentTypeToFGDC}"
-                                              Content="{x:Static r:Resources.LBL_IMS_CONTENT_TYPE_EXPORT}" 
-                                              IsChecked="{Binding XPath=/metadata/Esri/DataProperties/itemProps/imsContentType/@export}"/>
-                                    <ComboBox DockPanel.Dock="Right" Loaded="PostProcessComboBoxValues" 
-                                              corepages:EditorPage.SourceXPath="/metadata/Esri/DataProperties/itemProps/imsContentType" 
-                                              Style="{DynamicResource EditorHComboBoxStyle}" IsEditable="False"
-                                              ToolTip="{x:Static r:Definitions.ESRI_geoportalContentType}"
-                                              ItemsSource="{Binding Source={StaticResource IMS_ContentType}, Path=List}"
-                                              DisplayMemberPath="."
-                                              SelectedValuePath="@value">
-                                        <ComboBox.SelectedValue>
-                                            <e:MetadataElementSync XPath="/metadata/Esri/DataProperties/itemProps/imsContentType"/>
-                                        </ComboBox.SelectedValue>
-                                    </ComboBox>
-                                </DockPanel>
-                            </Border>-->
-
                             <!-- epa keywords -->
                             <ListBox Style="{DynamicResource EditorNoScrollListBoxStyle}">
                                 <ListBox.ItemsSource>
@@ -308,8 +280,8 @@
                                                                 <TextBlock Text="EPA Keywords" FontWeight="Bold"/>
                                                             </Hyperlink>
                                                         </Label>
-                                                        <Label VerticalAlignment="Center" HorizontalAlignment="Left" ToolTip="Link to Style Guide">
-                                                            <Hyperlink NavigateUri="https://www.epa.gov/geospatial/epa-metadata-technical-specification" RequestNavigate="Hyperlink_RequestNavigate" TextDecorations="{x:Null}">
+                                                        <Label VerticalAlignment="Center" HorizontalAlignment="Left" ToolTip="EME 5.0 Style Guide">
+                                                            <Hyperlink NavigateUri="https://www.epa.gov/geospatial/epa-geospatial-metadata-style-guide-using-eme-5#tags-epa-theme" RequestNavigate="Hyperlink_RequestNavigate" TextDecorations="{x:Null}">
                                                                 <Image Source="../Icons/info.rnd.white.png" RenderOptions.BitmapScalingMode="Fant" MaxHeight="14"/>
                                                             </Hyperlink>
                                                         </Label>
@@ -350,8 +322,8 @@
                                                                 <TextBlock Text="Program Code Keywords" FontWeight="Bold"/>
                                                             </Hyperlink>
                                                         </Label>
-                                                        <Label VerticalAlignment="Center" HorizontalAlignment="Left" ToolTip="Link to Style Guide">
-                                                            <Hyperlink NavigateUri="https://www.epa.gov/geospatial/epa-metadata-technical-specification" RequestNavigate="Hyperlink_RequestNavigate" TextDecorations="{x:Null}">
+                                                        <Label VerticalAlignment="Center" HorizontalAlignment="Left" ToolTip="EME 5.0 Style Guide">
+                                                            <Hyperlink NavigateUri="https://www.epa.gov/geospatial/epa-geospatial-metadata-style-guide-using-eme-5#tags-federal-program-code" RequestNavigate="Hyperlink_RequestNavigate" TextDecorations="{x:Null}">
                                                                 <Image Source="../Icons/info.rnd.white.png" RenderOptions.BitmapScalingMode="Fant" MaxHeight="14"/>
                                                             </Hyperlink>
                                                         </Label>
@@ -389,8 +361,8 @@
                                                                 <TextBlock Text="Place Keywords" FontWeight="Bold"/>
                                                             </Hyperlink>
                                                         </Label>
-                                                        <Label VerticalAlignment="Center" HorizontalAlignment="Left" ToolTip="Link to Style Guide">
-                                                            <Hyperlink NavigateUri="https://www.epa.gov/geospatial/epa-metadata-technical-specification" RequestNavigate="Hyperlink_RequestNavigate" TextDecorations="{x:Null}">
+                                                        <Label VerticalAlignment="Center" HorizontalAlignment="Left" ToolTip="EME 5.0 Style Guide">
+                                                            <Hyperlink NavigateUri="https://www.epa.gov/geospatial/epa-geospatial-metadata-style-guide-using-eme-5#tags-place" RequestNavigate="Hyperlink_RequestNavigate" TextDecorations="{x:Null}">
                                                                 <Image Source="../Icons/info.rnd.white.png" RenderOptions.BitmapScalingMode="Fant" MaxHeight="14"/>
                                                             </Hyperlink>
                                                         </Label>
@@ -434,8 +406,8 @@
                                                                 <TextBlock Text="User Keywords" FontWeight="Bold"/>
                                                             </Hyperlink>
                                                         </Label>
-                                                        <Label VerticalAlignment="Center" HorizontalAlignment="Left" ToolTip="Link to Style Guide">
-                                                            <Hyperlink NavigateUri="https://www.epa.gov/geospatial/epa-metadata-technical-specification" RequestNavigate="Hyperlink_RequestNavigate" TextDecorations="{x:Null}">
+                                                        <Label VerticalAlignment="Center" HorizontalAlignment="Left" ToolTip="EME 5.0 Style Guide">
+                                                            <Hyperlink NavigateUri="https://www.epa.gov/geospatial/epa-geospatial-metadata-style-guide-using-eme-5#tags-general" RequestNavigate="Hyperlink_RequestNavigate" TextDecorations="{x:Null}">
                                                                 <Image Source="../Icons/info.rnd.white.png" RenderOptions.BitmapScalingMode="Fant" MaxHeight="14"/>
                                                             </Hyperlink>
                                                         </Label>
@@ -474,15 +446,14 @@
                                                         <Button DockPanel.Dock="Right" Click="DeleteItem" Style="{DynamicResource DeleteButton}">
                                                             <Image Style="{DynamicResource DeleteImageStyle}" Source="../Icons/GenericDeleteRed16.png"/>
                                                         </Button>
-                                                        <!--<Label Style="{DynamicResource EditorHExpanderLabel}"  Content="{x:Static r:Resources.LBL_DESC_THEMEKEY}"/>-->
-                                                        <!--<Label Style="{DynamicResource EditorHExpanderLabel}"  Content="Custom Keywords"/>-->
+
                                                         <Label Style="{DynamicResource EditorHExpanderLabel}">
                                                             <Hyperlink NavigateUri="https://www.epa.gov/geospatial/epa-metadata-technical-specification#tags-general" RequestNavigate="Hyperlink_RequestNavigate">
                                                                 <TextBlock Text="Custom Keywords" FontWeight="Bold"/>
                                                             </Hyperlink>
                                                         </Label>
-                                                        <Label VerticalAlignment="Center" HorizontalAlignment="Left" ToolTip="Link to Style Guide">
-                                                            <Hyperlink NavigateUri="https://www.epa.gov/geospatial/epa-metadata-technical-specification" RequestNavigate="Hyperlink_RequestNavigate" TextDecorations="{x:Null}">
+                                                        <Label VerticalAlignment="Center" HorizontalAlignment="Left" ToolTip="EME 5.0 Style Guide">
+                                                            <Hyperlink NavigateUri="https://www.epa.gov/geospatial/epa-geospatial-metadata-style-guide-using-eme-5#tags-general" RequestNavigate="Hyperlink_RequestNavigate" TextDecorations="{x:Null}">
                                                                 <Image Source="../Icons/info.rnd.white.png" RenderOptions.BitmapScalingMode="Fant" MaxHeight="14"/>
                                                             </Hyperlink>
                                                         </Label>
@@ -519,15 +490,14 @@
                                                         <Button DockPanel.Dock="Right" Click="DeleteItem" Style="{DynamicResource DeleteButton}">
                                                             <Image Style="{DynamicResource DeleteImageStyle}" Source="../Icons/GenericDeleteRed16.png"/>
                                                         </Button>
-                                                        <!--<Label Style="{DynamicResource EditorHExpanderLabel}"  Content="{x:Static r:Resources.LBL_DESC_THEMEKEY}"/>-->
-                                                        <!--<Label Style="{DynamicResource EditorHExpanderLabel}"  Content="Keywords and Program Code"/>-->
+
                                                         <Label Style="{DynamicResource EditorHExpanderLabel}">
                                                             <Hyperlink NavigateUri="https://www.epa.gov/geospatial/epa-metadata-technical-specification#tags-general" RequestNavigate="Hyperlink_RequestNavigate">
                                                                 <TextBlock Text="Keywords and Program Code" FontWeight="Bold"/>
                                                             </Hyperlink>
                                                         </Label>
-                                                        <Label VerticalAlignment="Center" HorizontalAlignment="Left" ToolTip="Link to Style Guide">
-                                                            <Hyperlink NavigateUri="https://www.epa.gov/geospatial/epa-metadata-technical-specification" RequestNavigate="Hyperlink_RequestNavigate" TextDecorations="{x:Null}">
+                                                        <Label VerticalAlignment="Center" HorizontalAlignment="Left" ToolTip="EME 5.0 Style Guide">
+                                                            <Hyperlink NavigateUri="https://www.epa.gov/geospatial/epa-geospatial-metadata-style-guide-using-eme-5#tags-general" RequestNavigate="Hyperlink_RequestNavigate" TextDecorations="{x:Null}">
                                                                 <Image Source="../Icons/info.rnd.white.png" RenderOptions.BitmapScalingMode="Fant" MaxHeight="14"/>
                                                             </Hyperlink>
                                                         </Label>

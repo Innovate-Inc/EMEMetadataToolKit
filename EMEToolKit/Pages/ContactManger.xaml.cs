@@ -15,25 +15,16 @@ USA
 email: contracts@esri.com
 */
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-
-using ESRI.ArcGIS.Metadata.Editor.Properties;
 using System.Xml;
-using System.Security.Cryptography;
 
 using ESRI.ArcGIS.Metadata.Editor;
 using ESRI.ArcGIS.Metadata.Editor.Pages;
+using System.Net;
+using System.IO;
+
 namespace EPAMetadataEditor.Pages
 {
     /// <summary>
@@ -44,6 +35,7 @@ namespace EPAMetadataEditor.Pages
         private XmlDocument _contactsDoc = null;
         private XmlDocument _contactsEsri = null;
         private XmlDocument _contactsEpa = null;
+        private XmlDocument _contactsBAK = null;
         public string partySource = null;
         public ContactManager()
         {
@@ -66,7 +58,7 @@ namespace EPAMetadataEditor.Pages
             clone.AppendChild(contactsNode);
 
             // write back out the contacts marked saved
-            //var list = _contactsDoc.SelectNodes("//contact[(editorSave='True') and not(editorSource='EPA Contact')]");
+            //var list = _contactsDoc.SelectNodes("//contact[(editorSave='True') and not(editorSource='EPA Directory')]");
             var list = _contactsDoc.SelectNodes("//contact[editorSave='True']");
             StringBuilder sb = new StringBuilder();
 
@@ -97,7 +89,7 @@ namespace EPAMetadataEditor.Pages
                 // save back unique key
                 string digest = Utils.GeneratePartyKey(child);
                 sb.Append("<contact>");
-                sb.Append("<editorSource>external</editorSource>");
+                sb.Append("<editorSource>My Contacts</editorSource>");
                 sb.Append("<editorDigest>");
                 sb.Append(digest);
                 sb.Append("</editorDigest>");
@@ -125,7 +117,7 @@ namespace EPAMetadataEditor.Pages
             if (null == tagNode)
                 return;
 
-            if (false == check && "external".Equals(tagNode.InnerText))
+            if (false == check && "My Contacts".Equals(tagNode.InnerText))
             {
                 //string message = ESRI.ArcGIS.Metadata.Editor.Properties.Resources.MSGBOX_SAVE_MSG;
                 //string caption = ESRI.ArcGIS.Metadata.Editor.Properties.Resources.MSGBOX_SAVE_CAPTION;
@@ -160,9 +152,62 @@ namespace EPAMetadataEditor.Pages
             _contactsDoc = new XmlDocument();
             _contactsEsri = new XmlDocument();
             _contactsEpa = new XmlDocument();
-            XmlDocument _contactsBAK = new XmlDocument();
+            _contactsBAK = new XmlDocument();
+            XmlDocument _contactsWEB = new XmlDocument();
+
             string filePathEsri = Environment.GetFolderPath(Environment.SpecialFolder.Personal) + "\\ArcGIS\\Descriptions\\";
-            string filePathEpa = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\Innovate! Inc\\EME Toolkit\\EMEdb\\";
+            string filePathEme = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\Innovate! Inc\\EME Toolkit\\EMEdb\\";
+
+            // Check to see if contacts.bak exists.
+            // contacts.bak is created during LoadList. If LoadList crashes contacts.xml will be left with bad data.
+            // replace contacts.xml with contacts.bak
+            if (File.Exists(filePathEsri + "contacts.bak"))
+            {
+                File.Delete(filePathEsri + "contacts.xml");
+                File.Copy(filePathEsri + "contacts.bak", filePathEsri + "contacts.xml");
+                File.Delete(filePathEsri + "contacts.bak");
+            }
+
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create("https://edg.epa.gov/EME/contacts.xml");
+            request.Timeout = 15000;
+            request.Method = "HEAD"; //test URL without downloading the content
+            try
+            {
+                using (HttpWebResponse response = (HttpWebResponse)request.GetResponse())
+                {
+                    if (response.StatusCode.ToString() == "OK")
+                    {
+                        //MessageBoxResult webResponse = MessageBox.Show("EME contacts loaded from https://edg.epa.gov/EME/contacts.xml", "EME 5.0 Web Request", MessageBoxButton.OK, MessageBoxImage.Information);
+                        try { _contactsWEB.Load("https://edg.epa.gov/EME/contacts.xml"); }
+                        catch (System.IO.FileNotFoundException)
+                        {
+                            _contactsWEB.LoadXml(
+                            "<contacts> \n" +
+                            "  <contact> \n" +
+                            "    <editorSource></editorSource> \n" +
+                            "    <editorDigest></editorDigest> \n" +
+                            "    <rpIndName></rpIndName> \n" +
+                            "    <rpOrgName></rpOrgName> \n" +
+                            "    <rpPosName></rpPosName> \n" +
+                            "    <editorSave></editorSave> \n" +
+                            "    <rpCntInfo></rpCntInfo> \n" +
+                            "  </contact> \n" +
+                            "</contacts>");
+                        }
+                        _contactsWEB.Save(filePathEme + "contacts.xml");
+                    }
+                    else
+                    {
+                        MessageBoxResult webResponse = MessageBox.Show("Error loading contacts from https://edg.epa.gov/EME/contacts.xml." + "\n" + "EME contacts will be loaded from local cache.", "EME 5.0 Web Request", MessageBoxButton.OK, MessageBoxImage.Information);
+                    }
+                }
+            }
+            catch (Exception weberror)
+            {
+                {
+                    MessageBoxResult result = MessageBox.Show(weberror.Message + "\n" + "EME contacts will be loaded from local cache.", "EME 5.0 Web Request", MessageBoxButton.OK, MessageBoxImage.Warning);
+                }
+            }
 
             try { _contactsBAK.Load(filePathEsri + "contacts.xml"); }
             catch (System.IO.FileNotFoundException)
@@ -180,7 +225,9 @@ namespace EPAMetadataEditor.Pages
                 "  </contact> \n" +
                 "</contacts>");
             }
-
+            // save backup of user contacts.xml
+            _contactsBAK.Save(filePathEsri + "contacts.bak");
+            
             //_contactsEsri.PreserveWhitespace = true;
             try { _contactsEsri.Load(filePathEsri + "contacts.xml"); }
             catch (System.IO.FileNotFoundException)
@@ -201,7 +248,7 @@ namespace EPAMetadataEditor.Pages
             //_contactsEsri.Save(filePathEsri + "contactManEsri.xml");
 
             //_contactsEpa.PreserveWhitespace = true;
-            try { _contactsEpa.Load(filePathEpa + "contacts.xml"); }
+            try { _contactsEpa.Load(filePathEme + "contacts.xml"); }
             catch (System.IO.FileNotFoundException)
             {
                 _contactsEpa.LoadXml(
@@ -224,7 +271,7 @@ namespace EPAMetadataEditor.Pages
             XmlNode contactsNodeMerge = cloneMerge.CreateElement("contacts");
             cloneMerge.AppendChild(contactsNodeMerge);
 
-            // Populate contacts list with local contacts.xml and EPA contacts
+            // Populate contacts list with local contacts.xml and EPA Directorys
             var listEsri = _contactsEsri.SelectNodes("//contact");
             var listEpa = _contactsEpa.SelectNodes("//contact");
             StringBuilder sb2 = new StringBuilder();
@@ -234,7 +281,7 @@ namespace EPAMetadataEditor.Pages
                 XmlNode e1 = child.SelectSingleNode("editorSource");
                 if (null != e1)
                 {
-                    e1.InnerText = "external";
+                    e1.InnerText = "My Contacts";
                 }
 
                 e1 = child.SelectSingleNode("editorDigest");
@@ -255,7 +302,7 @@ namespace EPAMetadataEditor.Pages
                 XmlNode e2 = child.SelectSingleNode("editorSource");
                 if (null != e2)
                 {
-                    e2.InnerText = "EPA Contact";
+                    e2.InnerText = "EPA Directory";
                 }
 
                 e2 = child.SelectSingleNode("editorDigest");
@@ -287,7 +334,14 @@ namespace EPAMetadataEditor.Pages
             // generate contact list
             contactsListBox.ItemsSource = Utils.GenerateContactsList(_contactsDoc, this.DataContext);
 
+            // restore contacts.xml to original state
             _contactsBAK.Save(Utils.GetContactsFileLocation());
+
+            // contacts.xml restored successfully. It is now safe to delete BAK file.
+            if (File.Exists(filePathEsri + "contacts.bak"))
+            {
+                File.Delete(filePathEsri + "contacts.bak");
+            }
 
             // come find me later...
             Utils.GetMetadataEditorControl(this).AddCommitPage(this);

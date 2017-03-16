@@ -88,7 +88,6 @@
                             <Button Name="btnAddThesaEPA" Tag="thesaName" Click="btnAddThesaEPA_Click" Style="{DynamicResource AddButton}">
                                 <StackPanel VerticalAlignment="Top" Orientation="Horizontal">
                                     <Image Style="{DynamicResource AddImageStyle}" Source="../Icons/GenericAddGreen16.png"/>
-                                    <!--<TextBlock Style="{DynamicResource ButtonTextStyle}" Text="Add Keyword Thesaurus"/>-->
                                     <TextBlock Style="{DynamicResource ButtonTextStyle}" Text="Choose Keyword type or Program Code"/>
                                 </StackPanel>
                             </Button>
@@ -101,7 +100,7 @@
                         <DataTemplate>
                             <StackPanel Orientation="Horizontal" VerticalAlignment="Top">
                                 <TextBlock Style="{DynamicResource ButtonTextStyle}" Text="Thesaurus Type:"/>
-                                <p:CI_CitationSelect/>
+                                <p:CI_CitationSelect VerticalAlignment="Top"/>
                             </StackPanel>
                         </DataTemplate>
                     </ListBox.ItemTemplate>

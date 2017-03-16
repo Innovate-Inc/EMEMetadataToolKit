@@ -226,8 +226,8 @@
                                     <TextBlock Text="{x:Static r:Resources.LBL_ITEMINFO_TITLE}" FontWeight="Bold" />
                                 </Hyperlink>
                             </Label>
-                            <Label VerticalAlignment="Center" HorizontalAlignment="Left" ToolTip="Link to Style Guide">
-                                <Hyperlink NavigateUri="https://www.epa.gov/geospatial/epa-metadata-technical-specification#title" RequestNavigate="Hyperlink_RequestNavigate" TextDecorations="{x:Null}">
+                            <Label VerticalAlignment="Center" HorizontalAlignment="Left" ToolTip="EME 5.0 Style Guide">
+                                <Hyperlink NavigateUri="https://www.epa.gov/geospatial/epa-geospatial-metadata-style-guide-using-eme-5#title" RequestNavigate="Hyperlink_RequestNavigate" TextDecorations="{x:Null}">
                                     <Image Source="../Icons/info.rnd.white.png" RenderOptions.BitmapScalingMode="Fant" MaxHeight="14" HorizontalAlignment="Left"/>
                                 </Hyperlink>
                             </Label>
@@ -283,13 +283,8 @@
                                         <TextBlock Text="{x:Static r:Resources.LBL_ITEMINFO_KEY}" FontWeight="Bold"/>
                                     </Hyperlink>
                                 </Label>
-                                <!--<Label VerticalAlignment="Center" HorizontalAlignment="Left" ToolTip="Link to Style Guide">
-                                    <Hyperlink NavigateUri="https://www.epa.gov/geospatial/epa-metadata-technical-specification#tags-general" RequestNavigate="Hyperlink_RequestNavigate" TextDecorations="{x:Null}">
-                                        <Image Source="../Icons/help.rnd.white.png" RenderOptions.BitmapScalingMode="Fant" MaxHeight="14"/>
-                                    </Hyperlink>
-                                </Label>-->
-                                <Label VerticalAlignment="Center" HorizontalAlignment="Left" ToolTip="Link to Style Guide">
-                                    <Hyperlink NavigateUri="https://www.epa.gov/geospatial/epa-metadata-technical-specification#tags-general" RequestNavigate="Hyperlink_RequestNavigate" TextDecorations="{x:Null}">
+                                <Label VerticalAlignment="Center" HorizontalAlignment="Left" ToolTip="EME 5.0 Style Guide">
+                                    <Hyperlink NavigateUri="https://www.epa.gov/geospatial/epa-geospatial-metadata-style-guide-using-eme-5#tags-general" RequestNavigate="Hyperlink_RequestNavigate" TextDecorations="{x:Null}">
                                         <Image Source="../Icons/info.rnd.white.png" RenderOptions.BitmapScalingMode="Fant" MaxHeight="14"/>
                                     </Hyperlink>
                                 </Label>
@@ -339,13 +334,8 @@
                                                         <TextBlock Text="{x:Static r:Resources.LBL_ITEMINFO_SNIP}" FontWeight="Bold"/>
                                                     </Hyperlink>
                                                 </Label>
-                                                <!--<Label VerticalAlignment="Center" HorizontalAlignment="Left" ToolTip="Link to Style Guide">
-                                                    <Hyperlink NavigateUri="https://www.epa.gov/geospatial/epa-metadata-technical-specification#description" RequestNavigate="Hyperlink_RequestNavigate" TextDecorations="{x:Null}">
-                                                        <Image Source="../Icons/help.rnd.white.png" RenderOptions.BitmapScalingMode="Fant" MaxHeight="14"/>
-                                                    </Hyperlink>
-                                                </Label>-->
-                                                <Label VerticalAlignment="Center" HorizontalAlignment="Left" ToolTip="Link to Style Guide">
-                                                    <Hyperlink NavigateUri="https://www.epa.gov/geospatial/epa-metadata-technical-specification#description" RequestNavigate="Hyperlink_RequestNavigate" TextDecorations="{x:Null}">
+                                                <Label VerticalAlignment="Center" HorizontalAlignment="Left" ToolTip="EME 5.0 Style Guide">
+                                                    <Hyperlink NavigateUri="https://www.epa.gov/geospatial/epa-geospatial-metadata-style-guide-using-eme-5#description" RequestNavigate="Hyperlink_RequestNavigate" TextDecorations="{x:Null}">
                                                         <Image Source="../Icons/info.rnd.white.png" RenderOptions.BitmapScalingMode="Fant" MaxHeight="14"/>
                                                     </Hyperlink>
                                                 </Label>

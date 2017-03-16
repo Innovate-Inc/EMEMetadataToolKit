@@ -79,6 +79,7 @@ namespace EPAMetadataEditor.Pages
                     tbxLegalURL.Text = testURL;
                 }
                 tbxLegalURL.Focus();
+                tbxChangeFocus.Focus();
             }
         }
 

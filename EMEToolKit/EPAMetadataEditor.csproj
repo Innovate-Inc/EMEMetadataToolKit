@@ -1395,6 +1395,9 @@
     <Resource Include="Icons\info.rnd.transparent.png" />
     <Resource Include="Icons\info.rnd.white.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="EMEdb\emeConfig.xml" />
+  </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!--To modify your build process, add your task inside one of the targets below and uncomment it. 

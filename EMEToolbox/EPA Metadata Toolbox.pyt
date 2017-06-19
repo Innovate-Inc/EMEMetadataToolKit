@@ -383,7 +383,7 @@ class importTool(object):
     def __init__(self):
         """Define the tool (tool name is the name of the class)."""
         self.label = "EPA Import ArcGIS Record"
-        self.description = "It is not unusual for the default Esri tools to merge and preserve legacy metadata sections when performing a standard import. This tool ensures that all legacy elements are first purged before continuing with an import."
+        self.description = "It is not unusual for the default Esri tools to merge and preserve legacy metadata sections when performing a standard import. This tool first purges all metadata from the target (usually a feature class), then performs a clean import of the source. It does not perform the EPA upgrade or cleanup function, but rather is intended to supplement those tools and allow for a clean import of the output from those tools into a feature class."
         self.canRunInBackground = False
 
     def getParameterInfo(self):

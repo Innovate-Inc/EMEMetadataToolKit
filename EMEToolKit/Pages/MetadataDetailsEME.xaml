@@ -177,7 +177,11 @@
 
                                     <!-- date stamp -->
                                     <Border Grid.Row="4" Grid.ColumnSpan="2" Background="LemonChiffon"></Border>
-                                    <Label Grid.Row="4" Grid.Column="0" Style="{DynamicResource EditorHLabelNoIdentStyle}" Content="{x:Static r:Resources.LBL_META_DATE}" ToolTip="{x:Static r:Definitions.MD_Metadata_dateStamp}" Background="LemonChiffon" FontWeight="Bold"/>
+                                    <!--<Label Grid.Row="4" Grid.Column="0" Style="{DynamicResource EditorHLabelNoIdentStyle}" Content="{x:Static r:Resources.LBL_META_DATE}" ToolTip="{x:Static r:Definitions.MD_Metadata_dateStamp}" Background="LemonChiffon" FontWeight="Bold"/>-->
+                                    <DockPanel Grid.Row="4" Grid.Column="0">
+                                        <Label Style="{DynamicResource EditorHLabelNoIdentStyle}" Content="{x:Static r:Resources.LBL_META_DATE}" ToolTip="{x:Static r:Definitions.MD_Metadata_dateStamp}" Background="LemonChiffon" FontWeight="Bold"/>
+                                        <TextBox x:Name="tbxDate" Text="{e:MetadataElementSync XPath=/metadata/mdDateSt}" MaxHeight="16" HorizontalAlignment="Stretch" Loaded="tbxMdDateSt_Loaded" VerticalAlignment="Center"/>
+                                    </DockPanel>
                                     <ListBox x:Name="lbxMdDateSt" Grid.Row="4" Grid.Column="1" Style="{DynamicResource EditorNoScrollListBoxStyle}" v:Nav.AnchorName="mdDateSt,mdDateSt" ItemsSource="{Binding XPath=mdDateSt}" Background="LemonChiffon">
                                         <ListBox.ItemTemplate>
                                             <DataTemplate>

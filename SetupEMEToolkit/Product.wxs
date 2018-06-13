@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
-	<Product Id="{9643E2F1-5FE2-42F3-A3E5-5C555E5B8AF9}" Name="EME 5.0 for ArcGIS 10.5x" Language="1033" Version="0.9.21.07" Manufacturer="Innovate! Inc." UpgradeCode="{522B556A-CE0C-48D8-BB7B-4925F8515A5D}">
+	<Product Id="{9643E2F1-5FE2-42F3-A3E5-5C555E5B8AF9}" Name="EME 5.0 for ArcGIS 10.6x" Language="1033" Version="0.9.21.07" Manufacturer="Innovate! Inc." UpgradeCode="{522B556A-CE0C-48D8-BB7B-4925F8515A5D}">
 		<Package Id="*" InstallerVersion="400" Compressed="yes" InstallScope="perMachine" />
 <!-- 0.9.8.1 Fix EMEdb "Defaults" checkbox behavior -->
 		<MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
@@ -14,7 +14,13 @@
       <ComponentRef Id="ApplicationShortcut" />
 		</Feature>
 
-    <Feature Id="EMEToolkitArcGis105" Title="EME Toolkit for ArcCatalog 10.5" Level="1">
+    <Feature Id="EMEToolkitArcGis106" Title="EME Toolkit for ArcCatalog 10.6" Level="1">
+      <ComponentRef Id="EMEToolkitDLL106"/>
+      <ComponentRef Id="EMEToolkitConfig106"/>
+      <ComponentGroupRef Id="EMEToolbox106"/>
+    </Feature>
+    
+    <Feature Id="EMEToolkitArcGis105" Title="EME Toolkit for ArcCatalog 10.5" Level="0">
       <ComponentRef Id="EMEToolkitDLL105"/>
       <ComponentRef Id="EMEToolkitConfig105"/>
       <ComponentGroupRef Id="EMEToolbox105"/>
@@ -51,6 +57,24 @@
             <RegistryValue Root="HKCU" Key="Software\Innovate\EMEToolBox" Name="Product" Type="string" Value="[ProductName]" KeyPath ="yes"/>
             <RemoveFolder Id="ESRIRoam" On="uninstall"/>
           </Component>
+          <Directory Id="ESRIDesktop106" Name="Desktop10.6">
+            <Component Id="ESRIDesktop106" Guid="{FB729DB4-8F93-4330-96E9-782319790D31}">
+              <RegistryValue Root="HKCU" Key="Software\Innovate\EMEToolBox" Name="Product" Type="string" Value="EPA Metadata Toolbox" KeyPath ="yes"/>
+              <RemoveFolder Id="ESRIDesktop106" On="uninstall"/>
+            </Component>
+            <Directory Id="ArcToolbox106" Name="ArcToolbox">
+              <Component Id="ArcToolbox106" Guid="{E6A110C2-EB58-4CEA-8C65-9EB8945F4CC0}">
+                <RegistryValue Root="HKCU" Key="Software\Innovate\EMEToolBox" Name="ArcGIS 10.6.x" Type="string" Value="Installed" KeyPath ="yes"/>
+                <RemoveFolder Id="ArcToolbox106" On="uninstall"/>
+              </Component>
+              <Directory Id="MyToolbox106" Name="My Toolboxes">
+                <Component Id="MyToolbox106" Guid="{63F3A7D0-D4AF-4AC6-BC42-FAC2100439B3}">
+                  <RegistryValue Root="HKCU" Key="Software\Innovate\EMEToolBox" Name="InstallDir" Type="string" Value="[MyToolbox106]" KeyPath ="yes"/>
+                  <RemoveFolder Id="MyToolbox106" On="uninstall"/>
+                </Component>
+              </Directory>
+            </Directory>
+          </Directory>
           <Directory Id="ESRIDesktop105" Name="Desktop10.5">
             <Component Id="ESRIDesktop105" Guid="{0F9B1473-23B7-4600-BB03-44F026255063}">
               <RegistryValue Root="HKCU" Key="Software\Innovate\EMEToolBox" Name="Product" Type="string" Value="EPA Metadata Toolbox" KeyPath ="yes"/>
@@ -128,6 +152,12 @@
       </Directory>
 			<Directory Id="ProgramFilesFolder">
         <Directory Id="ArcGISFolder" Name="ArcGIS">
+          <Directory Id="ArcDesktop106" Name="Desktop10.6">
+            <Directory Id="ARC106BIN" Name="bin"/>
+            <Directory Id="Arc106MD" Name="Metadata">
+              <Directory Id="ARC106CONFIG" Name="Config"/>
+            </Directory>
+          </Directory>
           <Directory Id="ArcDesktop105" Name="Desktop10.5">
             <Directory Id="ARC105BIN" Name="bin"/>
             <Directory Id="Arc105MD" Name="Metadata">
@@ -261,6 +291,26 @@
       </Component>
     </ComponentGroup>
 
+    <ComponentGroup Id="EMEToolbox106" Directory="MyToolbox106">
+      <ComponentRef Id="ESRIRoam" />
+      <ComponentRef Id="ESRIDesktop106" />
+      <ComponentRef Id="ArcToolbox106" />
+      <ComponentRef Id="MyToolbox106" />
+      <Component Id="EMEToolboxComponents106" Guid="{3B437DFE-AEFD-4150-B5D7-098B2C275EE1}" Permanent="no">
+        <File Id="Arc106METoolbox" Source="$(var.EMEToolbox.ProjectDir)//EPA Metadata Toolbox.pyt"/>
+        <File Id="Arc106UpgCleanup" Source="$(var.EMEToolbox.ProjectDir)//EPAUpgradeCleanup.xslt"/>
+        <File Id="Arc106MergeTemp" Source="$(var.EMEToolbox.ProjectDir)//mergeTemplate.xslt"/>
+        <File Id="Arc106SaveTemp" Source="$(var.EMEToolbox.ProjectDir)//saveTemplate.xslt"/>
+        <File Id="Arc106cleanupToolXml" Source="$(var.EMEToolbox.ProjectDir)//EPA Metadata Toolbox.cleanupTool.pyt.xml"/>
+        <File Id="Arc106exportISOToolXml" Source="$(var.EMEToolbox.ProjectDir)//EPA Metadata Toolbox.exportISOTool.pyt.xml"/>
+        <File Id="Arc106mergeTemplateXml" Source="$(var.EMEToolbox.ProjectDir)//EPA Metadata Toolbox.mergeTemplate.pyt.xml"/>
+        <File Id="Arc106ToolboxXml" Source="$(var.EMEToolbox.ProjectDir)//EPA Metadata Toolbox.pyt.xml"/>
+        <File Id="Arc106saveTemplateXml" Source="$(var.EMEToolbox.ProjectDir)//EPA Metadata Toolbox.saveTemplate.pyt.xml"/>
+        <File Id="Arc106upgradeToolXml" Source="$(var.EMEToolbox.ProjectDir)//EPA Metadata Toolbox.upgradeTool.pyt.xml"/>
+        <RegistryValue Root="HKCU" Key="Software\Innovate" Name="Product" Type="string" Value="[ProductName]" KeyPath="yes"/>
+      </Component>
+    </ComponentGroup>
+
     <ComponentGroup Id="EMEToolbox105" Directory="MyToolbox105">
       <ComponentRef Id="ESRIRoam" />
       <ComponentRef Id="ESRIDesktop105" />
@@ -280,7 +330,7 @@
         <RegistryValue Root="HKCU" Key="Software\Innovate" Name="Product" Type="string" Value="[ProductName]" KeyPath="yes"/>
       </Component>
     </ComponentGroup>
-
+    
     <ComponentGroup Id="EMEToolbox104" Directory="MyToolbox104">
       <ComponentRef Id="ESRIRoam" />
       <ComponentRef Id="ESRIDesktop104" />
@@ -321,6 +371,12 @@
       </Component>
     </ComponentGroup>
 
+    <Component Id="EMEToolkitDLL106" Directory="ARC106BIN">
+      <File Id="EmeDLL106" Source="$(var.EPAMetadataEditor.TargetPath)" />
+    </Component>
+    <Component Id="EMEToolkitConfig106" Directory="ARC106CONFIG">
+      <File Id="EMEConfig106" Source="$(var.EPAMetadataEditor.ProjectDir)//Config//EPA Metadata Specification NAP ISO19115 2003.cfg" />
+    </Component>
     <Component Id="EMEToolkitDLL105" Directory="ARC105BIN">
       <File Id="EmeDLL105" Source="$(var.EPAMetadataEditor.TargetPath)" />
     </Component>
